@@ -4,7 +4,7 @@
 \usepackage{hyperref}
 \usepackage[utf8]{inputenc}
 
-\title{Notas de Algebra Lineal}
+\title{Notas de Algebra Lineal basadas en\\"Linear Algebra Done Right" 4ta edición por Axler, S.}
 \author{Murillo Vega, Gustavo \\ e-mail:
 \href{mailto:g.murillo24@info.uas.edu.mx}{g.murillo24@info.uas.edu.mx}}
 \date{October 2024}
@@ -179,7 +179,7 @@ en ingeniería o ciencias a estos elementos son a los que generalmente se llaman
 
 El conjunto de funciones $f: X \rightarrow F$ de un conjunto $X$
 a un campo $F$ forman un campo vectorial. En particular, los polinomios $P^n(t)$ sobre un campo $F$ y $t$ en un anillo $R$ con identidad (ejemplo, las matrices con todas sus operaciones, o algún campo) son un espacio vectorial. Para aclarar, un polinomio de tal espacio tiene
-la forma $\sum^n_{i=0} \alpha_i t^n$ con $\alpha_i\in F$.
+la forma $\sum^n_{i=1} \alpha_i t^n$ con $\alpha_i\in F$.
 \newpage
 
 \section{Bases y dimensiones}
@@ -428,7 +428,7 @@ Ahora si $\dim V = \dim W$, al ser de la misma dimensión, sea $n$, las
 bases de $V$ y $W$ se pueden escribir como $v_i$ y $w_i$ 
 respectivamente con $i$ de $1$ a $n$. Entonces existe un 
 $T\in\mathcal{L}(V,W)$ definido por
-$$T\left(\sum^n_{i=0}c_i v_i\right) = \sum^n_{i=0}c_i w_i$$
+$$T\left(\sum^n_{i=1}c_i v_i\right) = \sum^n_{i=1}c_i w_i$$
 con $c_i\in F$. Este $T$ es claramente sobreyectivo pues $Tx$ es una
 expansión de la base del contradominio. Entonces es invertible, y
 $V$ isomorfo a $W$. \hfill ////
@@ -580,52 +580,52 @@ renglón.
 Sea $T:F^3\rightarrow F^2$ dada con las bases estándar para el dominio y
 contradominio por $T(x,y,z)^t = (x,y + z)^t$, tenemos:
 {
-$$T\begin{pmatrix}
+$$T\begin{bmatrix}
     1\\
     0\\
     0    
-\end{pmatrix}
+\end{bmatrix}
  = 
- 1\begin{pmatrix}
+ 1\begin{bmatrix}
     1\\
     0
- \end{pmatrix}
- +0\begin{pmatrix}
+ \end{bmatrix}
+ +0\begin{bmatrix}
     0\\
     1
- \end{pmatrix}
+ \end{bmatrix}
  $$
- $$T\begin{pmatrix}
+ $$T\begin{bmatrix}
     0\\
     1\\
     0
- \end{pmatrix}
+ \end{bmatrix}
  =
- 0\begin{pmatrix}
+ 0\begin{bmatrix}
     1\\
     0
- \end{pmatrix}
- +1\begin{pmatrix}
+ \end{bmatrix}
+ +1\begin{bmatrix}
     0\\
     1
- \end{pmatrix}
+ \end{bmatrix}
  $$
  $$
- T\begin{pmatrix}
+ T\begin{bmatrix}
     0\\
     0\\
     1
- \end{pmatrix}
+ \end{bmatrix}
  =
- 0\begin{pmatrix}
+ 0\begin{bmatrix}
     1\\
     0
- \end{pmatrix}
+ \end{bmatrix}
  +
- 1\begin{pmatrix}
+ 1\begin{bmatrix}
     0\\
     1
- \end{pmatrix}
+ \end{bmatrix}
  $$
 }
 De manera que
@@ -640,7 +640,7 @@ para $W$. Entonces $\mathcal{M}(\cdot, B, C)$ (que denotaremos por
 $\mathcal{M}$) es un isomorfismo
 entre $\mathcal{L}(V,W)$, y $F^{m\times n}$.
 \newcommand{\M}{\mathcal{M}}
-\subsubsection{Prueba}
+\subsubsection*{Prueba}
 Es trivial que $\M$ es lineal, solo falta probar que es inyectivo y 
 sobreyectivo.
 
@@ -659,6 +659,70 @@ ambas finitas, tiene dimensión $nm$ por virtud de que es isomorfo a
 $F^{n\times m}$. Dicho independientemente de las bases
 $$\dim \mathcal{L}(V,W) = \dim V \times \dim W$$
 
+\subsection{La matriz de un vector}
+Sea $\{v_i\}_{i=1}^n$ base de $V$ y $x=\sum_i\alpha_i v_i$, 
+entonces se define la matriz de $x$ con esta base por la matriz
+$n\times 1$ por
+$$\M x = \begin{bmatrix}
+    \alpha_1 \\
+    \vdots \\
+    \alpha_n
+\end{bmatrix}$$
 
+\subsection{La columna de la matriz de una transformación}
+Sea $\mathcal{L}(V,W)$ donde $v_1$ hasta $v_n$ son una base para $V$
+y $w_1$ a $w_m$ una base para $W$, entonces
+$$\M(T)_{.,j} = \M (Tv_j)$$
+\subsubsection*{Prueba}
+Sea $A=\M T$, tenemos
+$$Tv_j = \sum^m_{i=1}A_{i,j} w_i$$
+$$\M(Tv_j) = \begin{bmatrix}
+    A_{1,j}\\
+    \vdots\\
+    A_{m,j}
+\end{bmatrix}
+=
+A_{.,j}$$
+\hfill ////
 
+\subsection{Mapeos lineales actúan como matrices}
+Sea $T$ un mapeo lineal con dominio de base $v_j$ y dimensión $n$,
+contradominio de base $w_i$ y dimensión $m$, entonces
+$$\M (Tx) = \M (T)\M (x)$$
+\subsubsection*{Prueba}
+Primero, sea $x$ expresado en la base $v_j$ con coeficientes $\alpha_j$,
+entonces $$Tx =\sum_j\alpha_j Tv_j$$
+luego $$\M(Tx)=\sum_j\alpha_j\M(Tv_j)$$
+porque $\M$ es lineal. Como probamos antes
+$M(Tv_i) = M(T)_{.,i}$, entonces
+\begin{align*}
+    \M(Tx) &= \sum_j\alpha_j\M(T)_{.,j}\\
+    &= \M(T) \begin{bmatrix}
+        \alpha_1 \\
+        \vdots \\
+        \alpha_n
+    \end{bmatrix}\\
+    &= \M(T)\M(x)
+\end{align*}
+Donde la segunda igualdad está dada porque la combinación
+lineal de columnas de una matriz es la multiplicación de una matriz
+por la columna con los coeficientes de la combinación lineal por 
+elementos. \hfill ////
+
+\subsubsection{Nota}
+Recordemos que $\M(T)$ depende de las bases del dominio y 
+contradominio de $T$. Mientras que $M(x)$ depende de la base
+de $V$ donde está $x$.
+
+\subsection{El rango de una matriz de un mapeo lineal}
+Sea $T$ un mapeo lineal con dominio y contradominio finito,
+entonces para cualquier selección de bases $\M(T)$ tiene rango
+igual a $\dim\im T$.
+\subsubsection*{Prueba}
+El mapeo lineal $y \mapsto \M y$ con $y\in\im T$ es un isomorfismo
+entre $\im T$ y el espacio de columnas de $\M(T)$, pues
+$\M y=\M(Tx) = \M(T)\M(x)$ para algún $x\in V$. Y como ya mostramos,
+tenemos que $\M(T)\M(x)$ está en el espacio de columnas de $\M(T)$.
+Sigue que $\dim\im T$ es el rango de columnas de $\M(T)$.
+\hfill ////
 \end{document}
