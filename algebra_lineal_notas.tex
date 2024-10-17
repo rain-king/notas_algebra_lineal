@@ -375,33 +375,191 @@ no es sobreyectivo.
 Entonces $\im T \neq W$, es decir, $T$ no es sobreyectivo.
 \hfill ////
 
-\subsection{Aplicaciones a sistemas de ecuaciones lineales}
-Supongamos que $Ax=b$ tiene una solución. Entonces podemos saber
-que la solución es única, si $T_A$ es invertible (inyectiva y sobre), de manera que $T_A^{-1}b = x$ es la única solución.
+\subsection{Invertibilidad}
+\subsubsection{Invertibilidad en espacios de la misma dimensión}
+Sean $\dim V = \dim W < \infty$.
+\begin{enumerate}
+    \item Si $T\in\mathcal{L}(V,W)$ entonces
+    inyectividad, invertibilidad y sobreyectividad son equivalentes.
+    \item Si $T\in\mathcal{L}(V,W)$ y $S\in\mathcal{L}(W,V)$,
+    $ST=I$ o $TS=I$, implica la invertibilidad de ambos mapeos.
+\end{enumerate}
 
-Se puede probar que si $T_A$ no es invertible, la solución no es única. Por lo cual, usando los dos corolarios anteriores, basta que $m\neq n$ para que la solución no sea única. 
+\subsubsection*{Prueba}
+\begin{enumerate}
+    \item Si $T$ es inyectiva, $\ker T$ tiene dimensión $0$, de manera 
+    que\\
+    $\dim V = \dim \im T$, por hipótesis $\dim V = \dim W$ y
+    $\dim \im T = \dim W$, es decir, $T$ es sobreyectiva, y por lo tanto
+    invertible.
+    
+    Si $T$ es sobreyectiva, $\im T = W$, de manera que
+    $$\dim V = \dim \ker T + \dim W \implies \dim \ker T = 0$$
+    Es decir, $T$ es inyectiva y por lo tanto invertible.
 
-Estos dos temas se desarrollarán más adelante en invertibilidad de mapeos lineales.
+    \item Sea $ST=I$, y $v\in\ker T$, entonces
+    $$v = (ST)v = S(Tv) = S0 = 0$$
+    por lo que $T$ es inyectiva al ser $\ker T$ de dimensión $0$,
+    y por lo tanto invertible.
 
-\subsubsection{Proposición}
-Si $Ax=b$ tiene más ecuaciones que variables, existen $b$ para
-los cuales el sistema no tiene solución.
+    Multiplicando $ST$ por $T^{-1}$ por la derecha llegamos a que,
+    $S=T^{-1}$, y por ser la inversa de otra función, es invertible. 
 
-Esto sigue directamente del segundo corolario al teorema fundamental de los mapeos lineales: Si $A\in F^{m\times n}$ con $m>n$, esto implica que $T_A: F^n\rightarrow F^m$ mapea hacía un espacio de mayor dimensión, por lo que no es sobreyectivo. Es decir, existen $b$ para
-los cuales no hay $x$ tal que $Ax=b$.
+    Análogamente si $TS=I$ se sigue el mismo procedimiento con
+    $w\in\ker S$, y se llega a que $S$ es invertible. Luego a que $T$ 
+    es invertible. \hfill ////
+\end{enumerate}
+
+\subsubsection{Espacios vectoriales isomorfos}
+Se dice que un espacio vectorial $V$ es isomorfo a otro $W$,
+si existe un mapeo lineal invertible $T$ de $V$ a $W$. Usualmente en 
+este contexto, a $T$ se le llama isomorfismo de $V$ a $W$.
+
+\subsubsection{La dimensión indica isomorfidad}
+Dos espacios de dimensión finita son isomorfos
+si y sólo si son de la misma dimensión.
+\subsubsection*{Prueba}
+Sea $T\in\mathcal{L}(V,W)$ un isomorfismo, porque es invertible es 
+inyectivo y sobreyectivo, es decir $\dim\ker T = 0$ y
+$\dim\im T = \dim W$, por el teorema fundamental de mapeos lineales
+sigue $$\dim V = \dim W$$
+
+Ahora si $\dim V = \dim W$, al ser de la misma dimensión, sea $n$, las 
+bases de $V$ y $W$ se pueden escribir como $v_i$ y $w_i$ 
+respectivamente con $i$ de $1$ a $n$. Entonces existe un 
+$T\in\mathcal{L}(V,W)$ definido por
+$$T\left(\sum^n_{i=0}c_i v_i\right) = \sum^n_{i=0}c_i w_i$$
+con $c_i\in F$. Este $T$ es claramente sobreyectivo pues $Tx$ es una
+expansión de la base del contradominio. Entonces es invertible, y
+$V$ isomorfo a $W$. \hfill ////
+
+\subsubsection{Nota}
+Por ahora diremos que por consecuencia del teorema anterior, cualquier espacio vectorial $V$ de dimensión $n$ es isomorfo a $F^n$.
+Después relacionaremos más fuertemente los mapeos lineales con
+las matrices.
+
 \newpage
 
-\section{Matrices y mapeos lineales}
-Hemos definido ad hoc la transformación relacionada a la matriz $A\in F^{m\times n}$.
-En particular, no usamos bases para el dominio y contradominio de tal transformación.
-Ahora veremos con más detenimiento la relación de las matrices con las transformaciones lineales,
-y las bases de los espacios dominio y contradominio.
+\section{Matrices}
+En la introducción mostramos algunas propiedades básicas de las
+matrices y su capacidad de expresar sistemas de ecuaciones lineales.
+A continuación mostraremos más prioridades importantes de matrices.
 
 \subsection{Renglones y columnas}
 La matriz renglón $i$ de la matriz $A$ la denotamos
 $A_{i,.}$, y la columna $j$ por $A_{.,j}$.
 
-\subsection{La matriz de un mapeo lineal}
+\subsection{Teoremas de multiplicación de matrices}
+\subsubsection*{Nota}
+Con la notación anterior de renglones y columnas, podemos
+escribir el elemento $(i,j)$ de $AB$ como
+$$A_{i,.} B_{.,j}$$
+
+\subsubsection{Columna o renglón de una multiplicación}
+La columna $j$ de la multiplicación de $AB$ es igual a la
+multiplicación de $A$ por la columna $j$ de $B$. Es decir
+$(AB)_{.,j} = A B_{.,j}$. Análogamente se tiene lo mismo para renglones,
+$(AB)_{i,.} = A_{i,.} B$.
+
+\subsubsection*{Prueba}
+El elemento $i$ de $(AB)_{.,j}$ es $A_{i,.} B_{.,j}$.
+El elemento $i$ de $AB_{.,j}$ es igualmente, $A_{i,.}B_{.,j}$.
+Análogamente para renglones. \hfill ////
+
+\subsubsection{La multiplicación de una matriz por un vector (columna)}
+Sea $A\in F^{m\times n}$ y $x=(x_1,\ldots,x_n)^t\in F^{n\times 1}$,
+entonces
+$$Ax=\sum^n_{j=1}A_{.,j} x_j$$
+Es decir, $Ax$ es la combinación lineal de las columnas de $A$
+con los elementos de $x$ como coeficientes.
+\subsubsection*{Prueba}
+El elemento $i$ de $Ax$ es
+$$A_{i,.}x=\sum^n_{j=1}A_{i,j}x_j$$
+mientras que el elemento $i$ de $\sum^n_{j=1}A_{.,j} x_j$
+es claramente también
+$$\sum^n_{j=1}A_{i,j} x_j$$
+\hfill ////
+
+\subsubsection{Multiplicación de matrices como combinación lineal
+de columnas o renglones}
+\begin{enumerate}
+    \item La columna $j$ de $AB$ es la combinación lineal de columnas
+    de $A$ con los elementos de la columna $j$ de $B$ como coeficientes.
+    \item El renglón $i$ de $AB$ es la combinación lineal de renglones
+    de $B$ con los elementos del renglón $i$ de $A$ como coeficientes.
+\end{enumerate}
+\subsubsection*{Prueba}
+1. $(AB)_{.,j}$ es $AB_{.,j}$ como ya probamos, a su vez esto
+es un producto de matriz por columna, entonces es la combinación lineal
+de columnas de $A$ con los elementos de la columna $B_{.,j}$ como
+coeficientes.
+
+2. $(AB)_{i,.}$ es $A_{i,.}B$. Su transpuesta es $B^t{A_{i,.}}^t$, donde
+${A_{i,.}}^t$ es una columna, por lo tanto $B^t{A_{i,.}}^t$ es la combinación lineal de columnas de $B^t$ con
+elementos de ${A_{i,.}}^t$ como coeficientes. La transpuesta de la
+transpuesta, es el renglón original $(AB)_{i,.}$. Entonces
+$(AB)_{i,.}$ es la combinación lineal de renglones de $B$ (cuyas transpuestas eran las columnas en $B^t$) con coeficientes del renglón $A_{i,.}$.
+\hfill ////
+
+\subsection{Factorización columna-renglón y rango de una matriz}
+\subsubsection{Rango de columnas y renglones}
+El rango de las columnas de una matriz $A\in F^{m\times n}$
+es la dimensión de \\
+$\spn \{A_{.,j}\}_{j=1}^n$ es decir, del
+espacio generado por las columnas de $A$.
+
+Análogamente se define el rango de renglones de $A$ como la 
+dimensión del espacio generado por los renglones de $A$.
+
+\subsubsection{Factorización columna-renglón}
+Sea $A\in F^{m\times n}$ con rango de columnas $p\geq 1$,
+entonces existen $C\in F^{m\times p}$ y $R\in F^{p\times n}$
+tal que $A=CR$.
+\subsubsection*{Prueba}
+Sea $C$ la matriz cuyas columnas corresponden a una base del
+espacio de columnas de $A$, como el rango de columnas de $A$ es $p$,
+$C$ es $m\times p$.
+
+Cada columna $j$ de $A$ es una combinación lineal
+de columnas de $C$ pues estas son básicas para el espacio de columnas
+de $A$. Sean los coeficientes de tal combinación lineal, los elementos
+de las columna $j$ de la matriz $R$, entonces $R$ es $p\times n$.
+
+Por sus dimensiones existe $CR$ de dimensión $m\times n$, cuya columna
+$j$ es $CR_{.,j}$, luego esta columna es combinación lineal de columnas
+de $C$ con coeficientes de la columna $j$ de $R$, que como dijimos, son
+exactamente los coeficientes para que tal combinación lineal sea la columna $j$ de $A$. \hfill ////
+
+\subsubsection{Rango de columnas es el rango de renglones}
+Si $A\in F^{m\times n}$, su rango de columnas es igual a su rango
+de renglones.
+\subsubsection*{Prueba}
+Sea $p\geq 1$ el rango de columnas de $A$, y factorizamos $A$
+por columna-renglón $CR$. Como cada renglón de $A$ es
+combinación lineal de los renglones de $R$, y $R$ tiene $p$
+renglones, el rango de las columnas de $A$ es a lo más $p$.
+Es decir, el rango de renglones es menor o igual que el rango de 
+columnas.
+
+De la misma manera si $q\geq 1$ es el rango de renglones, en $A^t$
+este es su rango de columnas. Y por el argumento anterior, su
+rango de renglones es menor o igual que su rango de columnas.
+En la matriz original, esto es que el rango de columnas es menor
+o igual que el rango de renglones. Probando para el caso que el rango 
+de columnas y el rango de renglones es al menos $1$, estos son
+iguales.
+
+Si el rango de columnas es $0$, este es el caso en que el espacio de
+columnas no tiene base, pero es generado por $\{0\}$, de manera que
+todas las columnas son $0$, y el rango de renglones también es $0$. Análogamente cuando el rango de renglones es $0$.
+\hfill ////
+
+\subsubsection{Rango}
+Finalmente, podemos definir el rango de una matriz como el rango de
+columnas, pues este es igual al rango de renglones. 
+
+\section{Relación de matrices y mapeos lineales}
+\subsection{Matriz de un mapeo lineal}
 Dado un mapeo lineal $T: V\rightarrow W$ y bases $B=\{b_i\}^n_{i=1}$
 $C=\{c_j\}^m_{j=1}$, definimos la matriz $A\in F^{m\times n}$ tal que
 $$Tb_j = \sum^m_{i=1} A_{i,j} c_i$$
@@ -412,7 +570,7 @@ de $Tb_j$ expandido en la base $C$ de $W$. Y denotamos a $A$, por
 $\mathcal{M}(T,B,C)$, o cuando no haya confusión con las bases,
 $\mathcal{M}(T)$.
 
-\subsection{Ejemplo}
+\subsubsection{Ejemplo}
 Haremos notar, que encontrar la matriz correspondiente a un mapeo lineal
 es un cuanto confuso, pues al expandir un vector del contradominio,
 tenemos una suma donde los coeficientes de la columna se encuentran
@@ -476,84 +634,31 @@ $$\mathcal{M}(T) = \begin{bmatrix}
     0 & 1 & 1
 \end{bmatrix}$$
 
-\subsection{Teoremas de multiplicación de matrices}
-\subsubsection*{Nota}
-Con la notación anterior de renglones y columnas, podemos
-escribir el elemento $(i,j)$ de $AB$ como
-$$A_{i,.} B_{.,j}$$
+\subsection{El espacio de mapeos lineales y de matrices son isomorfos}
+Sea $B=\{v_i\}_{i=1}^n$ una base para $V$ y $C=\{w_j\}_{j=1}^m$ una base
+para $W$. Entonces $\mathcal{M}(\cdot, B, C)$ (que denotaremos por 
+$\mathcal{M}$) es un isomorfismo
+entre $\mathcal{L}(V,W)$, y $F^{m\times n}$.
+\newcommand{\M}{\mathcal{M}}
+\subsubsection{Prueba}
+Es trivial que $\M$ es lineal, solo falta probar que es inyectivo y 
+sobreyectivo.
 
-\subsubsection{Columna o renglón de una multiplicación}
-La columna $j$ de la multiplicación de $AB$ es igual a la
-multiplicación de $A$ por la columna $j$ de $B$. Es decir
-$(AB)_{.,j} = A B_{.,j}$. Análogamente se tiene lo mismo para renglones,
-$(AB)_{i,.} = A_{i,.} B$.
+Sea $T\in\ker\M$, es decir $\M T$ es la matriz $0$. Luego por la
+definición de $\M T$, $Tv_i = 0$. Por lo que en general $Tx=0$,
+y $T=0$. Entonces $\dim\ker\M = 0$, y $\M$ es inyectivo.
 
-\subsubsection*{Prueba}
-El elemento $i$ de $(AB)_{.,j}$ es $A_{i,.} B_{.,j}$.
-El elemento $i$ de $AB_{.,j}$ es igualmente, $A_{i,.}B_{.,j}$.
-Análogamente para renglones. \hfill ////
-
-\subsubsection{La multiplicación de una matriz por un vector (columna)}
-Sea $A\in F^{m\times n}$ y $x=(x_1,\ldots,x_n)^t\in F^{n\times 1}$,
-entonces
-$$Ax=\sum^n_{j=1}A_{.,j} x_j$$
-Es decir, $Ax$ es la combinación lineal de las columnas de $A$
-con los elementos de $x$ como coeficientes.
-\subsubsection*{Prueba}
-El elemento $i$ de $Ax$ es
-$$A_{i,.}x=\sum^n_{j=1}A_{i,j}x_j$$
-mientras que el elemento $i$ de $\sum^n_{j=1}A_{.,j} x_j$
-es claramente también
-$$\sum^n_{j=1}A_{i,j} x_j$$
+Sea $A\in F^{m\times n}$, existe $T\in\mathcal{L}(V,W)$ definido
+por $$Tv_j = \sum^m_{i=1}A_{i,j} w_j$$
+De manera que $A=\M T$ y por lo tanto $\M$ es sobreyectivo.
 \hfill ////
 
-\subsubsection{Multiplicación de matrices como combinación lineal
-de columnas o renglones}
-\begin{enumerate}
-    \item La columna $j$ de $AB$ es la combinación lineal de columnas
-    de $A$ con los elementos de la columna $j$ de $B$ como coeficientes.
-    \item El renglón $i$ de $AB$ es la combinación lineal de renglones
-    de $B$ con los elementos del renglón $i$ de $A$ como coeficientes.
-\end{enumerate}
-\subsubsection*{Prueba}
-1. $(AB)_{.,j}$ es $AB_{.,j}$ como ya probamos, a su vez esto
-es un producto de matriz por columna, entonces es la combinación lineal
-de columnas de $A$ con los elementos de la columna $B_{.,j}$ como
-coeficientes.
+\subsubsection{Lema: Dimensión del espacio de mapeos lineales}
+$\mathcal{L}(V,W)$ con $V$ de dimensión $n$ y $W$ de dimensión $m$
+ambas finitas, tiene dimensión $nm$ por virtud de que es isomorfo a
+$F^{n\times m}$. Dicho independientemente de las bases
+$$\dim \mathcal{L}(V,W) = \dim V \times \dim W$$
 
-2. $(AB)_{i,.}$ es $A_{i,.}B$. Su transpuesta es $B^t{A_{i,.}}^t$, donde
-${A_{i,.}}^t$ es una columna, por lo tanto $B^t{A_{i,.}}^t$ es la combinación lineal de columnas de $B^t$ con
-elementos de ${A_{i,.}}^t$ como coeficientes. La transpuesta de la
-transpuesta, es el renglón original $(AB)_{i,.}$. Entonces
-$(AB)_{i,.}$ es la combinación lineal de renglones (que eran columnas en $B^t$) de coeficientes del renglón $A_{i,.}$.
-\hfill ////
 
-\subsection{Factorización columna-renglón y rango de una matriz}
-\subsubsection{Rango de columnas y renglones}
-El rango de las columnas de una matriz $A\in F^{m\times n}$
-es la dimensión de \\
-$\spn \{A_{.,j}\}_{j=1}^n$ es decir, del
-espacio generado por las columnas de $A$.
 
-Análogamente se define el rango de renglones de $A$ como la 
-dimensión del espacio generado por los renglones de $A$.
-
-\subsubsection{Factorización columna-renglón}
-Sea $A\in F^{m\times n}$ con rango de columnas $p\geq 1$,
-entonces existen $C\in F^{m\times p}$ y $R\in F^{p\times n}$
-tal que $A=CR$.
-\subsubsection*{Prueba}
-Sea $C$ la matriz cuyas columnas corresponden a una base del
-espacio de columnas de $A$, como el rango de columnas de $A$ es $p$,
-$C$ es $m\times p$.
-
-Cada columna $j$ de $A$ es una combinación lineal
-de columnas de $C$ pues estas son básicas para el espacio de columnas
-de $A$. Sean los coeficientes de tal combinación lineal, los elementos
-de las columna $j$ de la matriz $R$, entonces $R$ es $p\times n$.
-
-Por sus dimensiones existe $CR$ de dimensión $m\times n$, cuya columna
-$j$ es $CR_{.,j}$, luego esta columna es combinación lineal de columnas
-de $C$ con coeficientes de la columna $j$ de $R$, que como dijimos, son
-exactamente los coeficientes para que tal combinación lineal sea la columna $j$ de $A$. \hfill ////
 \end{document}
