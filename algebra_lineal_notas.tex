@@ -264,9 +264,10 @@ denotamos $T(x)$ por $Tx$ para $x\in V$.
 Denotamos por $\mathcal{L}(V,W)$ al conjunto de todas
 las transformaciones lineales de $V$ a $W$.
 Y denotamos $\mathcal{L}(V)$ a $\mathcal{L}(V, V)$. A estos últimos
-les llamamos \textit{operadores lineales}.
+les llamamos \textit{operadores lineales}. En particular el operador
+$I\in\mathcal{L}(V)$ definido por $Ix=x$ se llama la identidad en $V$.
 
-Se puede demostrar que $\mathcal{L}(V,W)$ es un espacio vectorial.
+Se puede demostrar fácilmente que $\mathcal{L}(V,W)$ es un espacio vectorial.
 
 %\newcommand{\ker}{\text{ker }}
 \subsection{Kernel}
@@ -375,6 +376,12 @@ Entonces $\im T \neq W$, es decir, $T$ no es sobreyectivo.
 \hfill ////
 
 \subsection{Invertibilidad}
+Una función invertible es una función inyectiva y sobreyectiva.
+Se demuestra en cursos de álgebra superior que esta definición es
+equivalente a que para $f:A\rightarrow B$ exista una función
+$g:B\rightarrow A$ tal que $(f\circ g)(y) = y$ para $y\in B$,
+y $(g\circ f)(x) = x$ para $x\in A$.
+
 \subsubsection{Invertibilidad en espacios de la misma dimensión}
 Sean $\dim V = \dim W < \infty$.
 \begin{enumerate}
@@ -383,7 +390,6 @@ Sean $\dim V = \dim W < \infty$.
     \item Si $T\in\mathcal{L}(V,W)$ y $S\in\mathcal{L}(W,V)$,
     $ST=I$ o $TS=I$, implica la invertibilidad de ambos mapeos.
 \end{enumerate}
-
 \subsubsection*{Prueba}
 \begin{enumerate}
     \item Si $T$ es inyectiva, $\ker T$ tiene dimensión $0$, de manera 
@@ -409,6 +415,18 @@ Sean $\dim V = \dim W < \infty$.
     es invertible. \hfill ////
 \end{enumerate}
 
+\subsubsection{La inversa de la multiplicación}
+Sean $T\in\mathcal{L}(V,W)$ y $S\in\mathcal{L}(W,V)$ invertibles, 
+entonces $ST$ es invertible y $(ST)^{-1}=T^{-1}S^{-1}$.
+\subsubsection*{Prueba}
+Existen $S^{-1}$ y $T^{-1}$, entonces
+\begin{align*}
+    ST(T^{-1}S^{-1}) &= S(TT^{-1})S^{-1}\\
+    &= SIS^{-1}\\
+    &= SS^{-1} = I
+\end{align*}
+\hfill ////
+
 \subsubsection{Espacios vectoriales isomorfos}
 Se dice que un espacio vectorial $V$ es isomorfo a otro $W$,
 si existe un mapeo lineal invertible $T$ de $V$ a $W$. Usualmente en 
@@ -432,17 +450,12 @@ con $c_i\in F$. Este $T$ es claramente sobreyectivo pues $Tx$ es una
 expansión de la base del contradominio. Entonces es invertible, y
 $V$ isomorfo a $W$. \hfill ////
 
-\subsubsection{Nota}
-Por ahora diremos que por consecuencia del teorema anterior, cualquier espacio vectorial $V$ de dimensión $n$ es isomorfo a $F^n$.
-Después relacionaremos más fuertemente los mapeos lineales con
-las matrices.
-
 \newpage
 
 \section{Matrices}
 En la introducción mostramos algunas propiedades básicas de las
-matrices y su capacidad de expresar sistemas de ecuaciones lineales.
-A continuación mostraremos más prioridades importantes de matrices.
+matrices, y su capacidad de expresar sistemas de ecuaciones lineales.
+A continuación mostraremos más propiedades importantes de matrices.
 
 \subsection{Renglones y columnas}
 La matriz renglón $i$ de la matriz $A$ la denotamos
@@ -652,7 +665,7 @@ por $$Tv_j = \sum^m_{i=1}A_{i,j} w_j$$
 De manera que $A=\M T$ y por lo tanto $\M$ es sobreyectivo.
 \hfill ////
 
-\subsubsection{Lema: Dimensión del espacio de mapeos lineales}
+\subsubsection{Corolario: Dimensión del espacio de mapeos lineales}
 $\mathcal{L}(V,W)$ con $V$ de dimensión $n$ y $W$ de dimensión $m$
 ambas finitas, tiene dimensión $nm$ por virtud de que es isomorfo a
 $F^{n\times m}$. Dicho independientemente de las bases
@@ -723,5 +736,42 @@ entre $\im T$ y el espacio de columnas de $\M(T)$, pues
 $\M y=\M(Tx) = \M(T)\M(x)$ para algún $x\in V$. Y como ya mostramos,
 tenemos que $\M(T)\M(x)$ está en el espacio de columnas de $\M(T)$.
 Sigue que $\dim\im T$ es el rango de columnas de $\M(T)$.
+\hfill ////
+
+\subsection{La matriz identidad}
+$I_n$ (o simplemente $I$ si no hay confusión) es la matriz identidad
+de dimensiones $n\times n$ definida por $I_{i,j}=\delta_{i,j}$
+donde $\delta_{i,j}$ es $0$ si $i\neq j$ y $1$ de otra manera.
+
+\subsection{Inversa de una matriz}
+Se dice que una matriz $A$ $m\times n$ es invertible si
+existe una matriz $B$ $n\times m$ tal que $AB=I_m$ y
+$BA=I_n$.
+
+\subsubsection{Propiedades de una matriz invertible}
+Análogamente a las transformaciones invertibles:
+\begin{enumerate}
+    \item Una matriz invertible es cuadrada.
+    \item Su inversa es única y denotada por $A^{-1}$.
+    \item Si $A$ y $B$ son invertibles de la misma dimensión,
+    $AB$ es invertible y $(AB)^{-1}=B^{-1}A^{-1}$.
+\end{enumerate}
+\subsubsection*{Prueba}
+1. Sea $A$ $m\times n$ invertible con $B$ como en la definición, y sean
+$T= x\mapsto Ax$ y $S= y\mapsto By$ con $x\in F^n$ y $y\in F^m$.
+Tenemos
+\begin{align*}
+    (TS)y &= ABy = y\\
+    (ST)x &= BAx = x
+\end{align*}
+Entonces $S=T^{-1}$, de manera que $T$ es un isomorfismo entre
+$F^n$ y $F^m$, por lo tanto $n=m$.
+
+2. Como se tiene que $S=T^{-1}$ es único para $T$, $B=\M(S)$ también
+es único para $A$.
+
+3. Sean $S$ y $T$ como en 1, por la proposición de la inversa
+de la multiplicación de mapeos lineales, sigue que
+$(AB)^{-1} = B^{-1}A^{-1}$.
 \hfill ////
 \end{document}
