@@ -4,7 +4,7 @@
 \usepackage{hyperref}
 \usepackage[utf8]{inputenc}
 
-\title{Notas de Algebra Lineal basadas en\\"Linear Algebra Done Right" 4ta edición por Axler, S.}
+\title{Notas de Algebra Lineal}
 \author{Murillo Vega, Gustavo \\ e-mail:
 \href{mailto:g.murillo24@info.uas.edu.mx}{g.murillo24@info.uas.edu.mx}}
 \date{Octubre 2024}
@@ -577,6 +577,7 @@ $C=\{c_j\}^m_{j=1}$, definimos la matriz $A\in F^{m\times n}$ tal que
 $$Tb_j = \sum^m_{i=1} A_{i,j} c_i$$
 para $j=1,\ldots,n$.
 
+\newcommand{\M}{\mathcal{M}}
 Dicho de otra forma, los elementos de $A_{.,j}$ son los coeficientes
 de $Tb_j$ expandido en la base $C$ de $W$. Y denotamos a $A$, por
 $\mathcal{M}(T,B,C)$, o cuando no haya confusión con las bases,
@@ -646,12 +647,31 @@ $$\mathcal{M}(T) = \begin{bmatrix}
     0 & 1 & 1
 \end{bmatrix}$$
 
+\subsection{Matriz de la multiplicación de mapeos lineales}
+Sean $B$, $D$, y $C$ bases para $V$, $U$, y $W$, $T\in\mathcal{L}(V,U)$,
+$S\in\mathcal{L}(U,W)$, entonces
+$$\M(ST,B,C) = \M(S,D,C)\M(T,B,D)$$
+\subsubsection*{Prueba}
+Sean $v_i$, $u_k$ y $w_j$ elementos de las bases $B$, $D$, y $C$ respectivamente, $X=\M(S,D,C)$, y $Y=\M(T,B,D)$.
+
+$\M(ST,B,C)$ está dada por: 
+\begin{align*}
+    STv_i &= S\left(\sum_k X_{i,k}u_k\right)\\
+    &= \sum_k X_{i,k} Su_k\\
+    &= \sum_k X_{i,k} \sum_j Y_{k,j} w_j \\
+    &= \sum_j \left(\sum_k X_{i,k} Y_{k,j}\right) w_j
+\end{align*}
+Donde $\sum_k X_{i,k} Y_{k,j} = (\M(S,D,C)\M(T,B,D))_{i,j}$.
+De aquí que la matriz de $ST$ es la matriz de $S$ por la matriz
+de $T$ de acuerdo a sus respectivas bases.
+
+\hfill ////
+
 \subsection{El espacio de mapeos lineales y de matrices son isomorfos}
 Sea $B=\{v_i\}_{i=1}^n$ una base para $V$ y $C=\{w_j\}_{j=1}^m$ una base
 para $W$. Entonces $\mathcal{M}(\cdot, B, C)$ (que denotaremos por 
 $\mathcal{M}$) es un isomorfismo
 entre $\mathcal{L}(V,W)$, y $F^{m\times n}$.
-\newcommand{\M}{\mathcal{M}}
 \subsubsection*{Prueba}
 Es trivial que $\M$ es lineal, solo falta probar que es inyectivo y 
 sobreyectivo.
@@ -774,4 +794,104 @@ es único para $A$.
 de la multiplicación de mapeos lineales, sigue que
 $(AB)^{-1} = B^{-1}A^{-1}$.
 \hfill ////
+
+\subsection{Matriz de la identidad en distintas bases}
+Sean $B$ y $C$ distintas bases de $V$, entonces
+$\M(I,B,C)$ es la inversa de\\
+$\M(I,C,B)$.
+\subsubsection*{Prueba}
+Por como es la matriz de una multiplicación de transformaciones,
+tomando en cuenta sus bases, tenemos
+$$\M(I)=\M(II,C,C) = \M(I,B,C) \M(I,C,B)$$
+y
+$$\M(I)=\M(II,B,B) = \M(I,C,B) \M(I,B,C)$$
+Donde la primer igualdad en cada ecuación viene de que la matriz
+de la identidad de una base a la misma base es meramente la matriz
+identidad. \hfill ////
+
+\subsection{Matriz de cambio de bases}
+Sea $T\in\mathcal{L}(V)$, y $v_i$, $u_i$ bases de $V$.
+Entonces si $A=\M(T,v_i)$, $B=\M(T,u_i)$
+entonces
+$$A=\M(I,u_i, v_i)B\M(I,v_i,u_i)$$
+\subsubsection*{Prueba}
+Simplemente se factoriza $A$ usando que $T=TI$,
+luego se factoriza el primer factor resultante $\M(T, u_i, v_i)$
+usando que $T=IT$.
+\begin{align*}
+    A&=\M(TI,v_i)\\
+    &=\M(T, u_i, v_i)\M(I, v_i, u_i)\\
+    &=\M(IT, u_i, v_i)\M(I, v_i, u_i)\\
+    &=\left(\M(I, u_i, v_i)\M(T,u_i)\right)\M(I, v_i, u_i)\\
+    &=\M(I, u_i, v_i)B\M(I, v_i, u_i)
+\end{align*}
+\hfill ////
+
+\subsection{La matriz de la inversa de un operador lineal}
+Sea $T$ un operador lineal invertible en $V$, con base $v_i$ y
+dimensión $n$. Entonces $\M(T^{-1}) = M(T)^{-1}$.
+\subsubsection*{Prueba}
+\begin{align*}
+    \M(I)&=\M(TT^{-1})\\
+    &=\M(T)\M(T^{-1})
+\end{align*}
+De donde multiplicando por $M(T)^{-1}$ por la izquierda,
+directamente sigue el resultado.\hfill ////
+\newpage
+
+\subsection{Invertibilidad de los factores de un operador lineal}
+Sean $S$ y $T$ operadores lineales sobre $V$ de dimensión finita,
+entonces $ST$ es invertible ssi $S$ y $T$ son invertible.
+\subsubsection*{Prueba}
+Ya probamos $ST$ invertible $\impliedby$ $S$ y $T$ invertibles.
+
+Ahora supongamos que $ST$ es invertible.
+
+\textbf{$S$ es sobreyectiva:} Si $S$ no fuese sobreyectiva, $ST$ tampoco lo sería y tampoco sería
+invertible. Por lo tanto $S$ es sobreyectiva.
+
+\textbf{$T$ es inyectiva:} Si $T$ no fuese inyectiva, existen $x\neq y$ tal que $Tx=Ty$,
+luego $STx=STy$, y $ST$ no sería inyectiva ni invertible. Por lo
+tanto $T$ es inyectiva.
+
+Como el espacio $V$ es de dimensión finita y los mapeos lineales son 
+operadores, sobreyectividad o inyectividad implican invertibilidad, así 
+$S$ y $T$ son invertibles.
+\hfill ////
+\newpage
+
+\section{Espacios cocientes}
+\subsection{Traslación de un subconjunto}
+Definimos la traslación de un conjunto $U\subset V$ por $x\in V$ como
+el conjunto $x+U:=\{x+u: u\in U\}$.
+
+\subsection{Def. Espacio Cociente}
+Si $U$ es un subespacio de $V$, definimos el espacio cociente
+$V/U$ como el conjunto de todas las traslaciones de $U$:
+$$V/U=\{x+U:x\in V\}$$
+
+\subsection{Una traslación es igual a otra o ajenos}
+Sean $v$ y $w$ en $V$ y $U$ un subespacio de $V$. Entonces
+$$v-w\in U \iff v+U = w+V \iff (v+U)\cap(w+U)\neq\emptyset$$
+\subsubsection*{Prueba}
+La demostración es un ejercicio elemental de álgebra y conjuntos.
+\newpage
+
+% \subsection{Clases de equivalencia}
+% Ya que para $v-w\in U$, $v+U=w+U$, no tenemos una representación
+% única de un elemento de $V/U$, para arreglar esto definimos las clases
+% de equivalencia. Como acabamos de demostrar $v-w\in U \iff v+U=W+U$,
+% así que definimos la relación de equivalencia $~$ por
+% $u~v \iff u-v\in U$. Y definimos la clase de equivalencia por
+% $[u]:=\{w:s~w\}$. Luego, identificamos $[u]$ con $u$.
+% De manera que ahora $v+U$ está bien definido.
+
+
+
+\newpage
+\section*{Referencias}
+\begin{enumerate}
+    \item Linear Algebra Done Right 4ta edición, por Axler, Sheldon.
+    \item Advanced Linear Algebra 3ra edición, por Roman, Steve.
+\end{enumerate}
 \end{document}
