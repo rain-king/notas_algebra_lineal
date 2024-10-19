@@ -379,9 +379,11 @@ Entonces $\im T \neq W$, es decir, $T$ no es sobreyectivo.
 \subsection{Invertibilidad}
 Una función invertible es una función inyectiva y sobreyectiva.
 Se demuestra en cursos de álgebra superior que esta definición es
-equivalente a que para $f:A\rightarrow B$ exista una función
+equivalente a que para \\
+$f:A\rightarrow B$ exista una función
 $g:B\rightarrow A$ tal que $(f\circ g)(y) = y$ para $y\in B$,
 y $(g\circ f)(x) = x$ para $x\in A$.
+\newpage
 
 \subsubsection{Invertibilidad en espacios de la misma dimensión}
 Sean $\dim V = \dim W < \infty$.
@@ -570,6 +572,7 @@ todas las columnas son $0$, y el rango de renglones también es $0$. Análogamen
 \subsubsection{Rango}
 Finalmente, podemos definir el rango de una matriz como el rango de
 columnas, pues este es igual al rango de renglones. 
+\newpage
 
 \section{Relación de matrices y mapeos lineales}
 \subsection{Matriz de un mapeo lineal}
@@ -647,6 +650,7 @@ $$\mathcal{M}(T) = \begin{bmatrix}
     1 & 0 & 0\\
     0 & 1 & 1
 \end{bmatrix}$$
+\newpage
 
 \subsection{Matriz de la multiplicación de mapeos lineales}
 Sean $B$, $D$, y $C$ bases para $V$, $U$, y $W$, $T\in\mathcal{L}(V,U)$,
@@ -809,6 +813,7 @@ $$\M(I)=\M(II,B,B) = \M(I,C,B) \M(I,B,C)$$
 Donde la primer igualdad en cada ecuación viene de que la matriz
 de la identidad de una base a la misma base es meramente la matriz
 identidad. \hfill ////
+\newpage
 
 \subsection{Matriz de cambio de bases}
 Sea $T\in\mathcal{L}(V)$, y $v_i$, $u_i$ bases de $V$.
@@ -838,7 +843,6 @@ dimensión $n$. Entonces $\M(T^{-1}) = M(T)^{-1}$.
 \end{align*}
 De donde multiplicando por $M(T)^{-1}$ por la izquierda,
 directamente sigue el resultado.\hfill ////
-\newpage
 
 \subsection{Invertibilidad de los factores de un operador lineal}
 Sean $S$ y $T$ operadores lineales sobre $V$ de dimensión finita,
@@ -865,6 +869,8 @@ $S$ y $T$ son invertibles.
 \subsection{Traslación de un subconjunto}
 Definimos la traslación de un conjunto $U\subset V$ por $x\in V$ como
 el conjunto $x+U:=\{x+u: u\in U\}$.
+
+Llamamos a $x$ en $x+U$ el representante de la traslación. Puede haber distintos representantes que generen la misma traslación.
 
 \subsection{Definición de espacio cociente}
 Si $U$ es un subespacio de $V$, definimos el espacio cociente
@@ -898,8 +904,8 @@ Luego
 \end{align*} 
 por cerradura del subespacio.\hfill ////
 
-Esto prueba que si se suman vectores distintos, se pueden sumar
-cualquiera otros vectores equivalentes y obtener una suma equivalente a la otra.
+Esto demuestra que la suma de traslaciones no depende de su
+representante.
 
 De manera que definimos $(x+U)+(y+U) := (x+y)+U$ para \\
 cualquier $x,y$.
