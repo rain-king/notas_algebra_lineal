@@ -49,7 +49,7 @@ Sea ${F}$ el campo de los reales o de los complejos, definimos una matriz $A\in 
         A_{2,1} & A_{2,2} & \ldots & A_{2, n} \\
         \vdots & \vdots & \vdots & \vdots \\
         A_{m,1} & A_{m,2} & \ldots & A_{m, n}
-    \end{bmatrix}$$
+    \end{bmatrix}.$$
 \end{enumerate}
 
 \subsection{Identificación de vectores columna y escalares}
@@ -120,7 +120,7 @@ $$x y* =
     x_2 \overline{y_2} & \ldots & x_2 \overline{y_n} \\
     \vdots & \vdots & \vdots \\
     x_n \overline{y_1} & \ldots & x_n \overline{y_n}
-\end{bmatrix}
+\end{bmatrix}.
 $$
 \newpage
 
@@ -241,7 +241,7 @@ Si $x_1,\ldots,x_n$ es una lista de vectores linealmente dependientes que genera
 a $V$, eliminar uno de ellos sigue generando $V$
 \subsubsection*{Prueba}
 Por hipótesis todo $x\in V$ puede escribirse como
-$$\sum^n_{i=1} \alpha_i x_i$$
+$$\sum^n_{i=1} \alpha_i x_i.$$
 Por el teorema anterior, $x_n$ puede escribirse como
 combinación lineal de los $x_1,\ldots,x_{n-1}$ restantes,
 sea
@@ -505,7 +505,7 @@ Sean $\dim V = \dim W < \infty$.
     invertible.
     
     Si $T$ es sobreyectiva, $\im T = W$, de manera que
-    $$\dim V = \dim \ker T + \dim W \implies \dim \ker T = 0$$
+    $$\dim V = \dim \ker T + \dim W \implies \dim \ker T = 0.$$
     Es decir, $T$ es inyectiva y por lo tanto invertible.
 
     \item Sea $ST=I$, y $v\in\ker T$, entonces
@@ -545,7 +545,7 @@ si y sólo si son de la misma dimensión.
 Sea $T\in\mathcal{L}(V,W)$ un isomorfismo, porque es invertible es 
 inyectivo y sobreyectivo, es decir $\dim\ker T = 0$ y
 $\dim\im T = \dim W$, por el teorema fundamental de mapeos lineales
-sigue $$\dim V = \dim W$$
+sigue $$\dim V = \dim W.$$
 
 Ahora si $\dim V = \dim W$, al ser de la misma dimensión, sea $n$, las 
 bases de $V$ y $W$ se pueden escribir como $v_i$ y $w_i$ 
@@ -571,7 +571,7 @@ $A_{i,.}$, y la columna $j$ por $A_{.,j}$.
 \subsubsection*{Nota}
 Con la notación anterior de renglones y columnas, podemos
 escribir el elemento $(i,j)$ de $AB$ como
-$$A_{i,.} B_{.,j}$$
+$$A_{i,.} B_{.,j}.$$
 
 \subsubsection{Columna o renglón de una multiplicación}
 La columna $j$ de la multiplicación de $AB$ es igual a la
@@ -587,7 +587,7 @@ Análogamente para renglones. \hfill ////
 \subsubsection{La multiplicación de una matriz por un vector (columna)}
 Sea $A\in F^{m\times n}$ y $x=(x_1,\ldots,x_n)^t\in F^{n\times 1}$,
 entonces
-$$Ax=\sum^n_{j=1}A_{.,j} x_j$$
+$$Ax=\sum^n_{j=1}A_{.,j} x_j.$$
 Es decir, $Ax$ es la combinación lineal de las columnas de $A$
 con los elementos de $x$ como coeficientes.
 \subsubsection*{Prueba}
@@ -595,7 +595,7 @@ El elemento $i$ de $Ax$ es
 $$A_{i,.}x=\sum^n_{j=1}A_{i,j}x_j$$
 mientras que el elemento $i$ de $\sum^n_{j=1}A_{.,j} x_j$
 es claramente también
-$$\sum^n_{j=1}A_{i,j} x_j$$
+$$\sum^n_{j=1}A_{i,j} x_j.$$
 \hfill ////
 
 \subsubsection{Multiplicación de matrices como combinación lineal
@@ -746,19 +746,19 @@ $$T\begin{bmatrix}
     0\\
     1
  \end{bmatrix}
- $$
+ .$$
 }
 De manera que
 $$\mathcal{M}(T) = \begin{bmatrix}
     1 & 0 & 0\\
     0 & 1 & 1
-\end{bmatrix}$$
+\end{bmatrix}.$$
 \newpage
 
 \subsection{Matriz de la multiplicación de mapeos lineales}
 Sean $B$, $D$, y $C$ bases para $V$, $U$, y $W$, $T\in\mathcal{L}(V,U)$,
 $S\in\mathcal{L}(U,W)$, entonces
-$$\M(ST,B,C) = \M(S,D,C)\M(T,B,D)$$
+$$\M(ST,B,C) = \M(S,D,C)\M(T,B,D).$$
 \subsubsection*{Prueba}
 Sean $v_i$, $u_k$ y $w_j$ elementos de las bases $B$, $D$, y $C$ respectivamente, $X=\M(S,D,C)$, y $Y=\M(T,B,D)$.
 
@@ -789,7 +789,7 @@ definición de $\M T$, $Tv_i = 0$. Por lo que en general $Tx=0$,
 y $T=0$. Entonces $\dim\ker\M = 0$, y $\M$ es inyectivo.
 
 Sea $A\in F^{m\times n}$, existe $T\in\mathcal{L}(V,W)$ definido
-por $$Tv_j = \sum^m_{i=1}A_{i,j} w_j$$
+por $$Tv_j = \sum^m_{i=1}A_{i,j} w_j.$$
 De manera que $A=\M T$ y por lo tanto $\M$ es sobreyectivo.
 \hfill ////
 
@@ -797,7 +797,7 @@ De manera que $A=\M T$ y por lo tanto $\M$ es sobreyectivo.
 $\mathcal{L}(V,W)$ con $V$ de dimensión $n$ y $W$ de dimensión $m$
 ambas finitas, tiene dimensión $nm$ por virtud de que es isomorfo a
 $F^{n\times m}$. Dicho independientemente de las bases
-$$\dim \mathcal{L}(V,W) = \dim V \times \dim W$$
+$$\dim \mathcal{L}(V,W) = \dim V \times \dim W.$$
 
 \subsection{La matriz de un vector}
 Sea $\{v_i\}_{i=1}^n$ base de $V$ y $x=\sum_i\alpha_i v_i$, 
@@ -807,12 +807,12 @@ $$\M x = \begin{bmatrix}
     \alpha_1 \\
     \vdots \\
     \alpha_n
-\end{bmatrix}$$
+\end{bmatrix}.$$
 
 \subsection{La columna de la matriz de una transformación}
 Sea $\mathcal{L}(V,W)$ donde $v_1$ hasta $v_n$ son una base para $V$
 y $w_1$ a $w_m$ una base para $W$, entonces
-$$\M(T)_{.,j} = \M (Tv_j)$$
+$$\M(T)_{.,j} = \M (Tv_j).$$
 \subsubsection*{Prueba}
 Sea $A=\M T$, tenemos
 $$Tv_j = \sum^m_{i=1}A_{i,j} w_i$$
@@ -822,13 +822,13 @@ $$\M(Tv_j) = \begin{bmatrix}
     A_{m,j}
 \end{bmatrix}
 =
-A_{.,j}$$
+A_{.,j}.$$
 \hfill ////
 
 \subsection{Mapeos lineales actúan como matrices}
 Sea $T$ un mapeo lineal con dominio de base $v_j$ y dimensión $n$,
 contradominio de base $w_i$ y dimensión $m$, entonces
-$$\M (Tx) = \M (T)\M (x)$$
+$$\M (Tx) = \M (T)\M (x).$$
 \subsubsection*{Prueba}
 Primero, sea $x$ expresado en la base $v_j$ con coeficientes $\alpha_j$,
 entonces $$Tx =\sum_j\alpha_j Tv_j$$
@@ -912,7 +912,7 @@ Por como es la matriz de una multiplicación de transformaciones,
 tomando en cuenta sus bases, tenemos
 $$\M(I)=\M(II,C,C) = \M(I,B,C) \M(I,C,B)$$
 y
-$$\M(I)=\M(II,B,B) = \M(I,C,B) \M(I,B,C)$$
+$$\M(I)=\M(II,B,B) = \M(I,C,B) \M(I,B,C).$$
 Donde la primer igualdad en cada ecuación viene de que la matriz
 de la identidad de una base a la misma base es meramente la matriz
 identidad. \hfill ////
@@ -922,7 +922,7 @@ identidad. \hfill ////
 Sea $T\in\mathcal{L}(V)$, y $v_i$, $u_i$ bases de $V$.
 Entonces si $A=\M(T,v_i)$, $B=\M(T,u_i)$
 entonces
-$$A=\M(I,u_i, v_i)B\M(I,v_i,u_i)$$
+$$A=\M(I,u_i, v_i)B\M(I,v_i,u_i).$$
 \subsubsection*{Prueba}
 Simplemente se factoriza $A$ usando que $T=TI$,
 luego se factoriza el primer factor resultante $\M(T, u_i, v_i)$
@@ -978,11 +978,11 @@ Llamamos a $x$ en $x+U$ el representante de la traslación. Puede haber distinto
 \subsection{Definición de espacio cociente}
 Si $U$ es un subespacio de $V$, definimos el espacio cociente
 $V/U$ como el conjunto de todas las traslaciones de $U$:
-$$V/U=\{x+U:x\in V\}$$
+$$V/U=\{x+U:x\in V\}.$$
 
 \subsection{Una traslación es igual a otra o ajenos}\label{traslaciones}
 Sean $v$ y $w$ en $V$, y $U$ un subespacio de $V$. Entonces
-$$v-w\in U \iff v+U = w+V \iff (v+U)\cap(w+U)\neq\emptyset$$
+$$v-w\in U \iff v+U = w+V \iff (v+U)\cap(w+U)\neq\emptyset.$$
 \subsubsection*{Prueba}
 La demostración es un ejercicio elemental de álgebra y conjuntos.
 
@@ -1034,7 +1034,7 @@ y es lineal.
 
 \subsection{Dimensión del espacio cociente}
 Si $V$ es de dimensión finita,
-$$\dim V/U = \dim V - \dim U$$
+$$\dim V/U = \dim V - \dim U.$$
 \subsubsection*{Prueba}
 Tenemos que $x\in\ker \pi \iff x+U = 0+U \iff x\in U$, donde la
 segunda equivalencia está dada por \ref{traslaciones}. De
@@ -1042,7 +1042,7 @@ manera que $\ker\pi = U$. Como $\pi: V \rightarrow V/U$ y $V$ es de
 dimensión finita, por el teorema fundamental de mapeos lineales
 $$\dim V = \dim\ker\pi + \dim\im\pi$$
 como $\im\pi=V/U$ y $\ker\pi = U$ sigue el resultado esperado
-$$\dim V/U = \dim V - \dim U$$
+$$\dim V/U = \dim V - \dim U.$$
 \hfill ////
 
 Para la siguiente definición hacemos notar que para
@@ -1054,10 +1054,10 @@ $$\widetilde T(x+\ker T) = Tx$$
 y notamos que $\widetilde T$ es lineal.
 
 Una propiedad se hace inmediatamente aparente.
-$$x\in\ker T \iff x+\ker T\in \ker\widetilde{T}$$
+$$x\in\ker T \iff x+\ker T\in \ker\widetilde{T}.$$
 La suficiencia viene de \ref{traslaciones}.
 La necesidad, porque si $x+\ker T\in \ker\widetilde{T}$, entonces
-$$\widetilde T(x+\ker T) = Tx = 0$$
+$$\widetilde T(x+\ker T) = Tx = 0.$$
 
 De la necesidad tenemos que $x+\ker T\in \ker\widetilde{T}$
 implica que $x\in\ker T$, es decir $x +\ker T = 0+\ker T$. De manera
@@ -1107,7 +1107,7 @@ es decir, $f_j(v_i)=1$ para $i=j$ y $0$ de otra forma.
 \subsubsection{Ejemplo}
 Sea $f_j$ el funcional en $F^n$ que escoge la coordenada $j$
 del vector $(x_i)$, es decir
-$$f_j((x_i))=x_j$$
+$$f_j((x_i))=x_j.$$
 Si $e_i$ es la base estándar de $F^n$
 $$f_j(e_i)=\delta_{i,j}$$
 por lo que $f_j$ forma la base dual de $e_i$.
@@ -1115,7 +1115,7 @@ por lo que $f_j$ forma la base dual de $e_i$.
 \subsubsection{Propiedad inmediata}
 Como los elementos de la base dual son lineales tenemos
 para $x=\sum_i\alpha_i v_i$ donde $v_i$ es una base para $V$,
-$$f_j(x)=\sum_i\alpha_i f_j(v_i) = \alpha_j$$
+$$f_j(x)=\sum_i\alpha_i f_j(v_i) = \alpha_j.$$
 De manera que en general, los elementos $f_j$ de la base dual
 seleccionan la coordenada $j$ de $x$ con respecto a $v_i$. Por lo que
 el ejemplo anterior no era una coincidencia.
@@ -1125,7 +1125,7 @@ De esto, tenemos directamente siguiente resultado.
 \subsection{Los funcionales mapean a coordenadas de un vector}
 Sea $x\in V$ con $v_i$ como base y $f_j$ la base
 dual, entonces
-$$x = \sum_i f_i(x) v_i$$
+$$x = \sum_i f_i(x) v_i.$$
 
 \subsection{La base dual es una base para el espacio dual}
 Sea $V$ de dimensión finita. Entonces la base dual es una base para
@@ -1135,13 +1135,51 @@ Sea $v_i$ una base para $V$, $f_i$ la base dual.
 
 Si $\sum_i\alpha_i f_i = 0$, es decir para cualquier
 $x=\sum_j\beta_j v_j\in V$ se tiene
-$$\sum_i\alpha_i f_i(x) = \sum_i\alpha_i \beta_i = 0$$
+$$\sum_i\alpha_i f_i(x) = \sum_i\alpha_i \beta_i = 0.$$
 En especial si se escoge $x=v_k$,
-$$\sum_i\alpha_i f_i(v_k) = \alpha_k = 0$$
+$$\sum_i\alpha_i f_i(v_k) = \alpha_k = 0.$$
 De manera que $f_i$ son linealmente independientes.
 
 La dimensión de $V'$ es igual al número de vectores $f_i$, y por
 ser linealmente independientes, por \ref{bases}, son base de $V'$.
+\hfill ////
+
+\subsection{El mapeo dual}
+Sea $T\in\mathcal{L}(V,W)$. El mapeo dual $T'\in\mathcal{L}(W',V')$,
+está definido por
+$$T'(f) = f\circ T$$
+para todo $f\in W'$.
+
+Por ser composición de mapeos lineales, $T'(f)$ es lineal,
+y siguiendo el mapeo de espacios,
+$T'(f):V\rightarrow W\rightarrow F$, se tiene que $T'(f)\in V'$.
+
+\subsubsection{Ejemplo}
+Sea $D\in\mathcal{L}(P(R))$ el operador de diferenciación
+en el espacio de polinomios. Y sea $f$ el funcional dado por
+$f(p) = p(3)$.
+
+Entonces \begin{align*}
+    D'(f)(p)&=(f\circ D)(p) \\
+    &= f(Dp)\\
+    &= (Dp)(3)
+\end{align*}
+
+\subsection{Propiedades algebraicas del mapeo dual}
+Sean $T\in\mathcal{L}(V,W)$ y $\lambda\in F$. Entonces
+\begin{enumerate}
+    \item $(S+T)' = S' + T'$ para $S\in\mathcal{L}(V,W)$.
+    \item $(\lambda T)' = \lambda T'$.
+    \item $(ST)'=T'S'$ para $S\in\mathcal{L}(W,U)$.
+\end{enumerate}
+\subsubsection*{Proof}
+Punto 1 y 2 son computaciones directas.
+
+Sea $f\in U'$ (el dominio de $(ST)'$). Entonces
+$$(ST)'(f) = f\circ (ST) = (f\circ S)T.$$
+Mientras que $T'S'$ también tiene dominio $U'$, y podemos usar la
+misma $f\in U'$ en $T'S'$:
+$$(T'S')(f)=T'(S'(f))=T'(f\circ S)=(f\circ S)\circ T= (f\circ S)T.$$
 \hfill ////
 
 \newpage
