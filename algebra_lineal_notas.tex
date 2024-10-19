@@ -323,7 +323,8 @@ interés si existen soluciones para $x$, y si existe alguna,
 si es única. Esto se podrá responder con teoremas a partir de propiedades tanto la imagen como del kernel de la transformación $T_A$.
 
 \subsection{Teorema fundamental de los mapeos lineales}
-Sea $T: V\rightarrow W$ un mapeo lineal de dimensión finita, entonces
+Sea $T: V\rightarrow W$ un mapeo lineal con $V$ de dimensión finita,
+entonces
 $$\dim V = \dim\ker T + \dim\im T.$$
 
 \subsubsection*{Prueba}
@@ -865,33 +866,118 @@ $S$ y $T$ son invertibles.
 Definimos la traslación de un conjunto $U\subset V$ por $x\in V$ como
 el conjunto $x+U:=\{x+u: u\in U\}$.
 
-\subsection{Def. Espacio Cociente}
+\subsection{Definición de espacio cociente}
 Si $U$ es un subespacio de $V$, definimos el espacio cociente
 $V/U$ como el conjunto de todas las traslaciones de $U$:
 $$V/U=\{x+U:x\in V\}$$
 
-\subsection{Una traslación es igual a otra o ajenos}
-Sean $v$ y $w$ en $V$ y $U$ un subespacio de $V$. Entonces
+\subsection{Una traslación es igual a otra o ajenos}\label{traslaciones}
+Sean $v$ y $w$ en $V$, y $U$ un subespacio de $V$. Entonces
 $$v-w\in U \iff v+U = w+V \iff (v+U)\cap(w+U)\neq\emptyset$$
 \subsubsection*{Prueba}
 La demostración es un ejercicio elemental de álgebra y conjuntos.
+
+De aquí en adelante $U$ es un subespacio de $V$, y los elementos en
+minúsculas son elementos cualesquiera de $V$
+\subsection{Equivalencia}
+Como acabamos de demostrar $v-w\in U \iff v+U=w+U$,
+así que definimos la relación de equivalencia $\equiv$ por
+$v\equiv w \iff v-w\in U$.
+
+Queremos formar un espacio vectorial sobre el espacio cociente.
+Para esto tenemos que definir correctamente la suma y multiplicación 
+por escalar.
+
+\subsection{Suma}
+Sean $v\equiv x$ y $w\equiv y$, entonces $v+w \equiv x+y$.
+\subsubsection*{Prueba}
+Por definición tenemos $v-x\in U$ y $w-y\in U$.
+Luego
+\begin{align*}
+    (v+w) - (x+y) &= (v-x) + (w-y) \in U
+\end{align*} 
+por cerradura del subespacio.\hfill ////
+
+Esto prueba que si se suman vectores distintos, se pueden sumar
+cualquiera otros vectores equivalentes y obtener una suma equivalente a la otra.
+
+De manera que definimos $(x+U)+(y+U) := (x+y)+U$ para \\
+cualquier $x,y$.
+
+
+\subsection{Multiplicación escalar}
+Sea $v\equiv x$ y $\lambda$ un escalar, entonces
+$\lambda v\equiv \lambda x$.
+\subsubsection*{Prueba}
+$v-x\in U$ entonces
+$$\lambda v -\lambda x = \lambda(v-x) \in U$$
+por cerradura de $U$. \hfill ////
+
+Así que definimos $\lambda (v + U):= \lambda v + U$.
+
+Ambas operaciones hacen que $V/U$ sea un espacio vectorial.
+Hacemos notar que $0+U$ es $0$ en este espacio vectorial.
+
+\subsection{Mapeo cociente}
+El mapeo cociente $\pi: V \rightarrow V/U$ está definido por
+$$\pi(x)=x+U$$
+y es lineal.
+
+\subsection{Dimensión del espacio cociente}
+Si $V$ es de dimensión finita,
+$$\dim V/U = \dim V - \dim U$$
+\subsubsection*{Prueba}
+Tenemos que $x\in\ker \pi \iff x+U = 0+U \iff x\in U$, donde la
+segunda equivalencia está dada por \ref{traslaciones}. De
+manera que $\ker\pi = U$. Como $\pi: V \rightarrow V/U$ y $V$ es de dimensión finita, por el teorema fundamental de mapeos lineales
+$$\dim V = \dim\ker\pi + \dim\im\pi$$
+como $\im\pi=V/U$ y $\ker\pi = U$ sigue el resultado esperado
+$$\dim V/U = \dim V - \dim U$$
+\hfill ////
+
+Para la siguiente definición hacemos notar que para
+$T\in\mathcal{L}(V,W)$ si $x+\ker T = y+\ker T$, por \ref{traslaciones}
+tenemos $x-y\in\ker T$ y por lo tanto $Tx=Ty$.
+\subsection{Mapeo inducido por el kernel de un mapeo lineal}
+Dado $T$ definimos $\widetilde T: V/\ker T\rightarrow W$ por
+$$\widetilde T(x+\ker T) = Tx$$
+y notamos que $\widetilde T$ es lineal.
+
+Una propiedad se hace inmediatamente aparente.
+$$x\in\ker T \iff x+\ker T\in \ker\widetilde{T}$$
+La suficiencia viene de \ref{traslaciones}.
+La necesidad, porque si $x+\ker T\in \ker\widetilde{T}$, entonces
+$$\widetilde T(x+\ker T) = Tx = 0$$
+
+De la necesidad tenemos que $x+\ker T\in \ker\widetilde{T}$
+implica que $x\in\ker T$, es decir $x +\ker T = 0+\ker T$. De manera
+que $\ker\widetilde{T} = \{0+\ker T\}$, y $\widetilde{T}$ es inyectiva.
+
+\subsubsection{Más propiedades de este mapeo}
+Sea $T\in\mathcal{L}(V,W)$ entonces
+\begin{enumerate}
+    \item $\widetilde{T}\circ\pi = T$, donde
+    $\pi:V/\ker T\rightarrow W$ es el mapeo cociente.
+    \item $\widetilde{T}$ es inyectiva.
+    \item $\im \widetilde{T} = \im T$.
+\end{enumerate}
+\subsubsection*{Prueba}
+\begin{enumerate}
+    \item $(\widetilde{T}\circ\pi)x = \widetilde{T}(x+\ker T) = Tx$
+    \item Lo probamos anteriormente.
+    \item Por definición.
+\end{enumerate}
+\hfill ////
+
+Por consecuencia de punto 2 y 3, $V/\ker T$ y $\im T$ son
+isomorfos.
 \newpage
 
-% \subsection{Clases de equivalencia}
-% Ya que para $v-w\in U$, $v+U=w+U$, no tenemos una representación
-% única de un elemento de $V/U$, para arreglar esto definimos las clases
-% de equivalencia. Como acabamos de demostrar $v-w\in U \iff v+U=W+U$,
-% así que definimos la relación de equivalencia $~$ por
-% $u~v \iff u-v\in U$. Y definimos la clase de equivalencia por
-% $[u]:=\{w:s~w\}$. Luego, identificamos $[u]$ con $u$.
-% De manera que ahora $v+U$ está bien definido.
-
-
+\section{Dualidad}
 
 \newpage
 \section*{Referencias}
 \begin{enumerate}
     \item Linear Algebra Done Right 4ta edición, por Axler, Sheldon.
-    \item Advanced Linear Algebra 3ra edición, por Roman, Steve.
 \end{enumerate}
 \end{document}
