@@ -33,7 +33,7 @@ Sea ${F}$ el campo de los reales o de los complejos, definimos una matriz $A\in 
     \item Como se verá en seguida, es útil definir el producto
     $AB\in {F}^{m\times n}$ de las matrices $A\in {F}^{m\times d}$ y
     $B \in {F}^{d\times n}$ de la siguiente manera:
-    $$AB_{i,j} = \sum^d_{k=1} A_{i,k} B_{k,j}.$$
+    $$(AB)_{i,j} = \sum^d_{k=1} A_{i,k} B_{k,j}.$$
     
     Nota: Si las dimensiones de $A$ y $B$ son $m\times d$
     y $d\times n$, el producto $AB$ tiene dimensiones $m\times n$
@@ -213,6 +213,48 @@ $\alpha 0 = 0$ no implica que $\alpha = 0$.
 
 El conjunto de un elemento distinto de $0$, $v$, es linealmente independiente.
 
+\newpage
+\subsubsection{Equivalencia de independencia lineal}\label{dependencia}
+Un vector $x\in V$ es combinación lineal de los vectores
+$x_1,\ldots,x_n$, si y sólo si $x_1,\ldots,x_n,x$ no son linealmente
+independientes.
+\subsubsection*{Prueba}
+Si $x=\sum_i \alpha_i x_i$ (es combinación lineal de los $x_i$), tenemos
+$$\sum_i \alpha_i x_i +(-1)x = 0$$
+pero esta combinación lineal igual a $0$ tiene un coeficiente que
+nunca es $0$\\
+(i.e $-1$), luego, $x_1,\ldots,x_n,x$ no son linealmente
+independientes.
+
+Ahora supongamos que $x_1,\ldots,x_n,x$ son linealmente independientes.
+$$\sum_i \alpha_i x_i + \alpha x = 0$$
+implica que $\alpha_i$ y $\alpha$ son $0$. De manera que
+$$\sum_i \alpha_i x_i = x$$
+o
+$$\sum_i \alpha_i x_i + (-1)x$$
+implicaría que $-1=0$. Por lo tanto $x$ no es combinación lineal
+de los $x_i$. \hfill ////
+
+\subsubsection{Eliminar un vector de una lista linealmente dependiente}
+\label{eliminación}
+Si $x_1,\ldots,x_n$ es una lista de vectores linealmente dependientes que genera
+a $V$, eliminar uno de ellos sigue generando $V$
+\subsubsection*{Prueba}
+Por hipótesis todo $x\in V$ puede escribirse como
+$$\sum^n_{i=1} \alpha_i x_i$$
+Por el teorema anterior, $x_n$ puede escribirse como
+combinación lineal de los $x_1,\ldots,x_{n-1}$ restantes,
+sea
+$$x_n=\sum^{n-1}_{j=1}\beta_j x_j$$
+luego
+\begin{align*}
+    x&=\sum^{n-1}_{i=1} \alpha_i x_i +
+    \alpha_n\sum^{n-1}_{j=1}\beta_j x_j\\
+    &=\sum^{n-1}_{i=1}(\alpha_i+\alpha_n\beta_i)x_i
+\end{align*}
+De manera que $x_1,\ldots,x_{n-1}$ siguen generando $V$.
+\hfill ////
+
 \subsection{Base}
 Se dice que $B\subset V$ es una base para $V$, si
 $\spn B = V$ y los vectores en $B$ son linealmente
@@ -237,7 +279,68 @@ finita, la dimensión es el número de vectores en la base. Pero
 también hay espacios vectoriales con bases numerables, 
 donde las combinaciones lineales en general son una serie.
 
-Como ya hemos dicho antes, el conjunto que consiste de $0$ no es base, sin embargo es el único conjunto que genera a $V$ que consiste de $0$. Así que por convención decimos que $V$ tiene dimensión $0$.
+Como ya hemos dicho antes, el conjunto que $O$ consiste de $0$ no es base, sin embargo $O$ se genera a sí mismo. Por convención decimos que $O$ tiene dimensión $0$, ya que no tiene una base.
+\newpage
+
+\subsection{Propiedades importantes de bases y dimensiones}
+\label{bases}
+Sea $V$ un espacio vectorial de dimensión finita distinto de $O$.
+\begin{enumerate}
+    \item Una lista de vectores $v_j$ que genera a $V$ puede
+    reducirse a una\\
+    base para $V$.
+    \item Una lista de vectores $v_j$ linealmente independientes 
+    puede extenderse a una base de $V$.
+    \item Una lista de $\dim V$ vectores linealmente independientes es una\\
+    base para $V$.
+\end{enumerate}
+\subsubsection*{Prueba}
+1. Sea $v_1,\ldots,v_n$ una lista que genere a $V$.
+Supongamos que primero, reducimos la lista de $v_i$ a $m\leq n$ 
+vectores eliminando los ceros. Esta lista sigue generando a $V$.
+
+Luego, repetimos el siguiente procedimiento $n$ veces:
+Si $v_k$ es el último vector de la lista reducida, y es
+combinación lineal de $v_1,\ldots,v_{k-1}$, lo eliminamos y repetimos el proceso con $k\leftarrow k-1$. De lo contrario, dejamos la lista
+sin modificar. En el primer caso, la lista sigue generando $V$ por
+\ref{eliminación}, y obviamente, también en el segundo caso.
+
+Ya que así recorremos toda la lista, ningún vector es combinación
+lineal del resto, y por \ref{dependencia} la lista final es 
+linealmente independiente, y sigue generando $V$ por el diseño
+del procedimiento.
+
+Por lo tanto la lista resultante es una base para $V$. 
+
+2. Sean $v_1,\ldots,v_n$ linealmente independientes,
+y $w_1,\ldots, w_m$ generadores de $V$.
+Luego $v_1,\ldots,v_n,w_1,\ldots,v_m$ genera a $V$, y por
+el punto 1 se puede reducir a una base. En el procedimiento de la
+prueba de 1, no se eliminan vectores que no sean combinación lineal del
+resto, por lo tanto ningún $v_j$ se elimina. Sigue que la base
+tiene todos los $v_j$.
+
+% 3. Sea $n=\dim V$, y $x_1,\ldots,x_n$ linealmente independientes, y sea $y_1,\ldots,y_n$ una base para $V$ (que podemos escribir así,
+% pues por definición de dimensión una base tiene $\dim V$ elementos).
+
+% $x_j$ se puede escribir como
+% $$\sum_i\alpha_{i,j} y_i$$
+% luego cualquier combinación lineal de los $x_j$ es
+% \begin{align*}
+%     \sum_j\beta_j\sum_i\alpha_{i,j}y_i &= \sum_i
+%     \left(\sum_j\beta_j\alpha_{i,j}\right)y_i\\
+%     &= \sum_i \lambda_i y_i
+% \end{align*}
+% Al ser $\lambda_j$ arbitrario, $x_j$ genera a $V$ y por lo tanto
+% es una base para $V$.
+
+3. Sean $x_1,\ldots,x_{\dim V}$ vectores linealmente independientes.
+Por el punto 2, estos se pueden extender a una base de $V$,
+$x_1,\ldots,x_m$ con $m\geq \dim V$. Sin embargo una base de $V$ tiene
+$\dim V$ vectores, por lo tanto $m=\dim V$. Esto quiere decir
+que la lista de vectores original es una base para $V$.
+\hfill ////
+    
 \newpage
 
 \section{Mapeos lineales}
@@ -935,7 +1038,8 @@ $$\dim V/U = \dim V - \dim U$$
 \subsubsection*{Prueba}
 Tenemos que $x\in\ker \pi \iff x+U = 0+U \iff x\in U$, donde la
 segunda equivalencia está dada por \ref{traslaciones}. De
-manera que $\ker\pi = U$. Como $\pi: V \rightarrow V/U$ y $V$ es de dimensión finita, por el teorema fundamental de mapeos lineales
+manera que $\ker\pi = U$. Como $\pi: V \rightarrow V/U$ y $V$ es de 
+dimensión finita, por el teorema fundamental de mapeos lineales
 $$\dim V = \dim\ker\pi + \dim\im\pi$$
 como $\im\pi=V/U$ y $\ker\pi = U$ sigue el resultado esperado
 $$\dim V/U = \dim V - \dim U$$
@@ -980,6 +1084,65 @@ isomorfos.
 \newpage
 
 \section{Dualidad}
+\subsection{Funcional}
+Un funcional lineal en $V$, o simplemente funcional por el contexto de 
+álgebra lineal, es un mapeo lineal $V$ a su campo.
+Es decir, un elemento de $\mathcal{L}(V,F)$.
+
+\subsection{Espacio dual}
+El espacio dual de $V$ es definido por $\mathcal{L}(V,F)$.
+Es decir, es el espacio de funcionales en $V$.
+
+\subsection{Dimensión del espacio dual}
+$\dim V' = \dim V$.
+\subsubsection*{Prueba}
+$\dim V' = \dim \mathcal{L}(V,F) = \dim V \dim F = \dim V$.
+
+\subsection{Base dual}
+Sea $v_j$ una base para $V$ de dimensión finita, la base dual de $v_j$ 
+son los elementos $f_j\in V'$ donde 
+$$f_j(v_i) = \delta_{i,j}$$
+es decir, $f_j(v_i)=1$ para $i=j$ y $0$ de otra forma.
+
+\subsubsection{Ejemplo}
+Sea $f_j$ el funcional en $F^n$ que escoge la coordenada $j$
+del vector $(x_i)$, es decir
+$$f_j((x_i))=x_j$$
+Si $e_i$ es la base estándar de $F^n$
+$$f_j(e_i)=\delta_{i,j}$$
+por lo que $f_j$ forma la base dual de $e_i$.
+
+\subsubsection{Propiedad inmediata}
+Como los elementos de la base dual son lineales tenemos
+para $x=\sum_i\alpha_i v_i$ donde $v_i$ es una base para $V$,
+$$f_j(x)=\sum_i\alpha_i f_j(v_i) = \alpha_j$$
+De manera que en general, los elementos $f_j$ de la base dual
+seleccionan la coordenada $j$ de $x$ con respecto a $v_i$. Por lo que
+el ejemplo anterior no era una coincidencia.
+
+De esto, tenemos directamente siguiente resultado.
+
+\subsection{Los funcionales mapean a coordenadas de un vector}
+Sea $x\in V$ con $v_i$ como base y $f_j$ la base
+dual, entonces
+$$x = \sum_i f_i(x) v_i$$
+
+\subsection{La base dual es una base para el espacio dual}
+Sea $V$ de dimensión finita. Entonces la base dual es una base para
+$V'$.
+\subsubsection*{Prueba}
+Sea $v_i$ una base para $V$, $f_i$ la base dual.
+
+Si $\sum_i\alpha_i f_i = 0$, es decir para cualquier
+$x=\sum_j\beta_j v_j\in V$ se tiene
+$$\sum_i\alpha_i f_i(x) = \sum_i\alpha_i \beta_i = 0$$
+En especial si se escoge $x=v_k$,
+$$\sum_i\alpha_i f_i(v_k) = \alpha_k = 0$$
+De manera que $f_i$ son linealmente independientes.
+
+La dimensión de $V'$ es igual al número de vectores $f_i$, y por
+ser linealmente independientes, por \ref{bases}, son base de $V'$.
+\hfill ////
 
 \newpage
 \section*{Referencias}
