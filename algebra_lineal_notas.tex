@@ -180,6 +180,38 @@ en ingeniería o ciencias a estos elementos son a los que generalmente se llaman
 El conjunto de funciones $f: X \rightarrow F$ de un conjunto $X$
 a un campo $F$ forman un campo vectorial. En particular, los polinomios $P^n(t)$ sobre un campo $F$ y $t$ en un anillo $R$ con identidad (ejemplo, las matrices con todas sus operaciones, o algún campo) son un espacio vectorial. Para aclarar, un polinomio de tal espacio tiene
 la forma $\sum^n_{i=1} \alpha_i t^n$ con $\alpha_i\in F$.
+
+\subsection{Subespacio vectorial}
+Un subespacio vectorial $U$ de $V$ es un espacio vectorial
+con el mismo campo y operaciones que $V$, tal que $U\subset V$.
+
+\subsection{Suma de subespacios}
+Sean $V_j$ $m$ subespacios de $V$, entonces definimos el conjunto
+de $\sum_j v_j$ con $v_j\in V_j$ como la suma de los $V_j$ subespacios
+de $V$, y lo denotamos $\sum_j V_j$.
+\subsubsection*{Propiedades}
+\begin{enumerate}
+    \item $\sum_j V_j$ es un subespacio de $V$
+    \item $\sum_j V_j\subset U$ si $V_j\subset U$ para cada $j$.
+    Es decir, la suma de subespacios, es el subespacio más pequeño
+    que contiene a todos los subespacios de la suma.
+\end{enumerate}
+
+\subsection{Suma directa}
+$\sum_j V_j$ es una suma directa si $x\in\sum_j V_j$
+si solo hay una forma de escribir $x$ como  $\sum_j v_j$
+con $v_j\in V_j$. Entonces escribimos $\oplus_j V_j$
+o $$V_1\oplus\cdots\oplus V_n.$$
+
+\subsubsection*{Propiedades}
+\begin{enumerate}
+    \item $\sum_j V_j$ es una suma directa si y sólo si
+    la única forma de escribir $0$ como $\sum_j v_j$
+    con $v_j\in V_j$ es siendo $v_j=0$ para cada $j$.
+    \item Sean $U$ y $W$ subespacios de $V$, entonces
+    $U+W$ es suma directa si y sólo si $U\cap W = \{0\}$.
+\end{enumerate}
+
 \newpage
 
 \section{Bases y dimensiones}
@@ -193,14 +225,7 @@ o equivalentemente que $W$ es generado por $U$, si
 $W$ es el conjunto de todas las combinaciones lineales de $U$.
 Denotamos tal $W$ por $\spn U$.
 
-Nótese que $\spn U\subset V$ y es un espacio vectorial.
-
-\subsection{Subespacio vectorial}
-Un subespacio vectorial $U$ de $V$ es un espacio vectorial
-con el mismo campo y operaciones que $V$, tal que $U\subset V$.
-
-\subsubsection*{Ejemplo}
-$\spn U$ donde $U\subset V$ es subespacio de $V$. Y $V$ es subespacio de $V$.
+Nótese que $\spn U$ es un subespacio de $V$.
 
 \subsection{Independencia lineal}
 Un conjunto de vectores $x_i$ es independiente linealmente si
@@ -1251,6 +1276,7 @@ $$\dim V = \dim U^0 + \dim U.$$
 
 Lo siguiente es consecuencia directa del teorema anterior.
 \subsubsection{Condiciones que determinan el aniquilador}
+\label{aniq}
 Sea $V$ de dimensión finita y $U$ un subespacio.
 \begin{enumerate}
     \item $U^0 = \{0\} \iff U=V$
@@ -1258,6 +1284,7 @@ Sea $V$ de dimensión finita y $U$ un subespacio.
 \end{enumerate}
 
 \subsection{El kernel de la transformación dual}
+\label{kerdual}
 Sea $T\in\mathcal{L}(V,W)$.
 \begin{enumerate}
     \item $\ker T' = (\im T)^0$.
@@ -1285,7 +1312,81 @@ la segunda por el teorema de dimensión del aniquilador,
 y la última por el teorema fundamental de mapeos lineales.
 \hfill ////
 
+\subsection{El dual de un mapeo es inyectivo ssi el mapeo es sobreyectivo}
+Si $T\in\mathcal{L}(V,W)$ con $V,W$ finitos, entonces
+$T$ sobreyectivo si y sólo si $T'$ es inyectivo.
+\subsubsection*{Prueba}
+Tenemos
+\begin{align*}
+    T\text{ sobreyectivo} &\iff \im T = W\\
+    &\iff (\im T)^0 = \{0\}\\
+    &\iff \ker T' = \{0\}.
+\end{align*}
+Donde la segunda equivalencia viene de \ref{aniq} y la tercera
+de \ref{kerdual}.\hfill ////
+
+\subsection{El rango del mapeo dual}
+Si $V$ y $W$ son de dimensión finita y $T$ un mapeo lineal
+entre ellos, entonces
+\begin{enumerate}
+    \item $\dim\im T' = \dim\im T$
+    \item $\im T = (\ker T)^0$.
+\end{enumerate}
+
+\subsection{El mapeo dual es sobreyectivo ssi el mapeo es inyectivo}
+Si $V$ y $W$ son de dimensión finita y $T\in\mathcal{L}(V,W)$
+entonces
+$$T\text{ inyectivo}\iff T'\text{ sobreyectivo}.$$
+
+\subsection{La matriz del mapeo dual}
+Si $V$ y $W$ son de dimensión finita y $T\in\mathcal{L}(V,W)$.
+Entonces
+$$\M(T') = (\M(T))^t.$$
+\subsubsection*{Prueba}
+Sean $v_\alpha$, $w_\beta$, bases para $V$ y $W$, y $f_i$, $g_j$ sus
+bases duales respectivamente.
+Notemos que $\alpha$ e $i$ recorren los mismos índices al igual que
+$\beta$ y $j$.
+Así, quedan implicadas qué bases usamos para
+$A=\M(T)$ y $B=M(T')$. Comparemos sus términos.
+
+\begin{align*}
+    T'g_j &= \sum_i B_{i,j} f_i
+\end{align*}
+
+Evaluando en $v_\alpha$ tenemos
+\begin{align*}
+    (T'g_j)v_\alpha &= \sum_i B_{i,j} f_i(v_\alpha)\\
+    &= B_{\alpha,j}.
+\end{align*}
+Expresando lo mismo en términos de la definición de $T'$:
+\begin{align*}
+    (T'g_j)v_\alpha &= g_j(Tv_\alpha)\\
+    &= g_j\left(\sum_\beta A_{\beta,\alpha} w_\beta\right)\\
+    &=\sum_\beta A_{\beta,\alpha} g_j(w_\beta)\\
+    &= A_{j,\alpha}.
+\end{align*}
+$$\implies B_{i,j} = A_{j,i}.$$
+\hfill ////
+
+Con la teoría desarrollada sobre dualidad, podemos dar una prueba
+sobre el rango de una matriz usando solo igualdades.
+\subsection{El rango de columnas es igual al rango de renglones}
+Sea $A\in F^{m\times n}$, entonces su rango de columnas es
+igual a su rango de renglones.
+\subsubsection*{Prueba}
+Definimos $T: F^n\rightarrow F^m$ por $Tx=Ax$ de manera que
+$\M(T)=A$.
+\begin{align*}
+    \text{rango de columnas de $A$} &= \dim\im T\\
+    &= \dim\im T'\\
+    &= \text{rango de columnas de $A^t$}\\
+    &= \text{rango de renglones de $A$}.
+\end{align*}
+\hfill ////
+
 \newpage
+
 \section*{Referencias}
 \begin{enumerate}
     \item Linear Algebra Done Right 4ta edición, por Axler, Sheldon.
