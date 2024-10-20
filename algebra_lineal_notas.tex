@@ -72,7 +72,8 @@ El sistema de ecuaciones lineales general es:
     \sum^n_{j=1}a_{m,j} x_j &= b_m.
 \end{align*}
 
-Ahora, veamos la forma de la multiplicación de $A=(a_{i,j})\in F^{m\times n}$
+Ahora, veamos la forma de la multiplicación de
+$A=(a_{i,j})\in F^{m\times n}$
 por $x=(x_1, x_2, \ldots, x_n)^t \in F^{n\times 1}$:
 $$Ax = 
 \begin{bmatrix}
@@ -250,7 +251,7 @@ luego
 \begin{align*}
     x&=\sum^{n-1}_{i=1} \alpha_i x_i +
     \alpha_n\sum^{n-1}_{j=1}\beta_j x_j\\
-    &=\sum^{n-1}_{i=1}(\alpha_i+\alpha_n\beta_i)x_i
+    &=\sum^{n-1}_{i=1}(\alpha_i+\alpha_n\beta_i)x_i.
 \end{align*}
 De manera que $x_1,\ldots,x_{n-1}$ siguen generando $V$.
 \hfill ////
@@ -329,7 +330,7 @@ tiene todos los $v_j$.
 % \begin{align*}
 %     \sum_j\beta_j\sum_i\alpha_{i,j}y_i &= \sum_i
 %     \left(\sum_j\beta_j\alpha_{i,j}\right)y_i\\
-%     &= \sum_i \lambda_i y_i
+%     &= \sum_i \lambda_i y_i.
 % \end{align*}
 % Al ser $\lambda_j$ arbitrario, $x_j$ genera a $V$ y por lo tanto
 % es una base para $V$.
@@ -461,7 +462,7 @@ Un mapeo lineal $T:V\rightarrow W$ a un espacio de menor dimensión no es inyect
 \begin{align*}
 \dim\ker T &= \dim V - \dim\im T\\
     &\geq \dim V - \dim W\\
-    &> 0
+    &> 0.
 \end{align*}
 Como probamos antes, $T$ es inyectiva solo si $\dim \ker T = 0$,
 por lo tanto no es inyectivo.\hfill ////
@@ -474,7 +475,7 @@ no es sobreyectivo.
 \begin{align*}
     \dim\im T &= \dim V - \dim\ker T\\
     &< \dim W - \dim\ker T \\
-    &\leq \dim W
+    &\leq \dim W.
 \end{align*}
 Entonces $\im T \neq W$, es decir, $T$ no es sobreyectivo.
 \hfill ////
@@ -529,7 +530,7 @@ Existen $S^{-1}$ y $T^{-1}$, entonces
 \begin{align*}
     ST(T^{-1}S^{-1}) &= S(TT^{-1})S^{-1}\\
     &= SIS^{-1}\\
-    &= SS^{-1} = I
+    &= SS^{-1} = I.
 \end{align*}
 \hfill ////
 
@@ -768,7 +769,7 @@ $\M(ST,B,C)$ está dada por:
     STv_i &= S\left(\sum_k X_{i,k}u_k\right)\\
     &= \sum_k X_{i,k} Su_k\\
     &= \sum_k X_{i,k} \sum_j Y_{k,j} w_j \\
-    &= \sum_j \left(\sum_k X_{i,k} Y_{k,j}\right) w_j
+    &= \sum_j \left(\sum_k X_{i,k} Y_{k,j}\right) w_j.
 \end{align*}
 Donde $\sum_k X_{i,k} Y_{k,j} = (\M(S,D,C)\M(T,B,D))_{i,j}$.
 De aquí que la matriz de $ST$ es la matriz de $S$ por la matriz
@@ -843,7 +844,7 @@ $M(Tv_i) = M(T)_{.,i}$, entonces
         \vdots \\
         \alpha_n
     \end{bmatrix}\\
-    &= \M(T)\M(x)
+    &= \M(T)\M(x).
 \end{align*}
 Donde la segunda igualdad está dada porque la combinación
 lineal de columnas de una matriz es la multiplicación de una matriz
@@ -891,7 +892,7 @@ $T= x\mapsto Ax$ y $S= y\mapsto By$ con $x\in F^n$ y $y\in F^m$.
 Tenemos
 \begin{align*}
     (TS)y &= ABy = y\\
-    (ST)x &= BAx = x
+    (ST)x &= BAx = x.
 \end{align*}
 Entonces $S=T^{-1}$, de manera que $T$ es un isomorfismo entre
 $F^n$ y $F^m$, por lo tanto $n=m$.
@@ -933,7 +934,7 @@ usando que $T=IT$.
     &=\M(T, u_i, v_i)\M(I, v_i, u_i)\\
     &=\M(IT, u_i, v_i)\M(I, v_i, u_i)\\
     &=\left(\M(I, u_i, v_i)\M(T,u_i)\right)\M(I, v_i, u_i)\\
-    &=\M(I, u_i, v_i)B\M(I, v_i, u_i)
+    &=\M(I, u_i, v_i)B\M(I, v_i, u_i).
 \end{align*}
 \hfill ////
 
@@ -943,7 +944,7 @@ dimensión $n$. Entonces $\M(T^{-1}) = M(T)^{-1}$.
 \subsubsection*{Prueba}
 \begin{align*}
     \M(I)&=\M(TT^{-1})\\
-    &=\M(T)\M(T^{-1})
+    &=\M(T)\M(T^{-1}).
 \end{align*}
 De donde multiplicando por $M(T)^{-1}$ por la izquierda,
 directamente sigue el resultado.\hfill ////
@@ -1163,7 +1164,7 @@ $f(p) = p(3)$.
 Entonces \begin{align*}
     D'(f)(p)&=(f\circ D)(p) \\
     &= f(Dp)\\
-    &= (Dp)(3)
+    &= (Dp)(3).
 \end{align*}
 
 \subsection{Propiedades algebraicas del mapeo dual}
@@ -1214,7 +1215,75 @@ por lo tanto $f+\lambda g \in U^0$.\hfill ////
 
 \subsubsection{Dimensión del aniquilador}
 Sea $V$ de dimensión finita y $U$ un subespacio, entonces
-$$\dim U^0 = \dim V - \dim U.$$
+$$\dim V = \dim U^0 + \dim U.$$
+\subsubsection*{Prueba}
+Sea $I$ en $\mathcal{L}(U, V)$ definido por $I(u)=u$
+para $u\in U$. Entonces $I'\in\mathcal{L}(V', U')$.
+
+Por el teorema fundamental de
+mapeos lineales tenemos
+\begin{align}
+    \dim V' &= \dim\ker I' + \dim\im I'.
+\end{align}
+Sustituiremos términos de esta ecuación por términos
+equivalentes.
+
+1. $\ker I' = U^0$:
+\begin{align*}
+    \ker I' &= \{f\in V': I'(f)=0\}\\
+    &= \{f\in V': f\circ I=0\}\\
+    &= \{f\in V': f(U)=\{0\}\}\\
+    &= U^0.
+\end{align*}
+
+2. $\im I' = U'$:
+\begin{align*}
+    \im I' &= I'(V')\\
+    &=\{f\circ I: f\in V'\}\\
+    &=\{f: f\in U'\}\\
+    &=U'.
+\end{align*}
+
+Sustituyendo con los puntos 1 y 2 en (1), y usando que
+$\dim V'=\dim V$ y $\dim U'= \dim U$, tenemos
+$$\dim V = \dim U^0 + \dim U.$$
+\hfill ////
+
+Lo siguiente es consecuencia directa del teorema anterior.
+\subsubsection{Condiciones que determinan el aniquilador}
+Sea $V$ de dimensión finita y $U$ un subespacio.
+\begin{enumerate}
+    \item $U^0 = \{0\} \iff U=V$
+    \item $U^0 = V' \iff U=\{0\}$
+\end{enumerate}
+
+\subsection{El kernel de la transformación dual}
+Sea $T\in\mathcal{L}(V,W)$.
+\begin{enumerate}
+    \item $\ker T' = (\im T)^0$.
+    \item Si $V$ y $W$ son de dimensión finita,
+    $\dim\ker T' = \dim\ker T + \dim W - \dim V$.
+\end{enumerate}
+\subsubsection*{Prueba}
+1. Sea $f\in\ker T'$, entonces $T'(f) = f\circ T = 0$.
+Esto quiere decir que $f(\im T) =\{0\}$, por definición
+$f\in (\im T)^0$. De manera que $\ker T' \subset (\im T)^0$.
+
+Como $T$ es sobreyectiva limitando $W$ a $\im T$,
+existe siempre $v\in V$ tal que $w= Tv$ para $w\in W$. Entonces 
+$f\in (\im T)^0$ es equivalente a que $f\circ T = 0$, luego
+$f\in\ker T'$.
+
+2. Tenemos
+\begin{align*}
+    \dim\ker T' &= \dim (\im T)^0\\
+    &= \dim W - \dim \im T\\
+    &= \dim W - (\dim V - \dim\ker T).
+\end{align*}
+Donde la primer igualdad viene dada por el punto 1,
+la segunda por el teorema de dimensión del aniquilador, 
+y la última por el teorema fundamental de mapeos lineales.
+\hfill ////
 
 \newpage
 \section*{Referencias}
