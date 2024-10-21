@@ -4,7 +4,7 @@
 \usepackage{hyperref}
 \usepackage[utf8]{inputenc}
 
-\title{Notas de Espacios Vectoriales Finitos}
+\title{Notas de Algebra Lineal}
 \author{Murillo Vega, Gustavo \\ e-mail:
 \href{mailto:g.murillo24@info.uas.edu.mx}{g.murillo24@info.uas.edu.mx}}
 \date{20 de Octubre 2024}
@@ -1384,9 +1384,141 @@ $\M(T)=A$.
     &= \text{rango de renglones de $A$}.
 \end{align*}
 \hfill ////
-
 \newpage
 
+\section{Polinomios}
+En vez de usar determinantes para la sección de eigenvalores y
+eigenvectores, Axler usa el concepto de polinomio mínimo de un
+operador lineal. Así que será útil repasar polinomios.
+No mostraremos pruebas pero escribiremos resultados importantes.
+
+Se supone familiaridad con los números complejos. $F$ se
+refiere a los complejos o los reales.
+
+\subsection{Ceros de polinomios}
+Se recuerda que un polinomio de grado $m$
+$p:F\rightarrow F$ es una función de la forma
+\begin{align*}
+    p(z) &= a_0+a_1 z+\ldots+a_n z^n\\
+    &= \sum^n_{k=0} a_k z^k
+\end{align*}
+con $m\neq 0$ y $z\in F$.
+
+\subsection{Ceros de un polinomio}
+Un cero (o raíz) $\lambda$ de un polinomio $p$ es un escalar de 
+$F$ que anula el polinomio, es decir
+$$p(\lambda) = 0.$$
+
+\subsection{Cada cero de un polinomio corresponde a un factor de grado uno}
+Sea $p$ un polinomio de grado $n$, entonces
+$p(\lambda) = 0$ si y sólo si existe un polinomio $q$
+de grado $n-1$ tal que para todo $z$
+$$p(z)=(z-\lambda)q(z).$$
+
+\subsection{Algoritmo de división para polinomios}
+Sean $p$ y $s$ polinomios con $s\neq 0$. Entonces existen
+polinomios $q$, $r$ tal que
+$$p=sq+r$$
+con el grado de $r$ menor que $s$.
+
+\subsection{Teorema fundamental del algebra, primer versión}
+Todo polinomio no constante de coeficientes complejos, tiene
+un cero en los complejos.
+
+\subsection{teorema fundamental del algebra, segunda versión}
+Si $p$ es un polinomio sobre los complejos no constante de 
+coeficientes complejos, de grado $n$,
+entonces $p$ tiene una factorización única
+$$p(z)=c\prod^n_{i=0}(z-\lambda_i)$$
+con $c,\lambda_j$ en los complejos.
+
+\subsection{Factorización de polinomios sobre los reales}
+Si $p$ es un polinomio sobre los complejos con coeficientes 
+reales y $\lambda$ es un cero de $p$, entonces $\lambda$ también
+lo es.
+
+\subsection{Factorización de un polinomio cuadrático}
+Sean $b,c$ reales, entonces el polinomio cuadrático de
+coeficientes reales
+$$p(x)=x^2+2bx+c$$
+tiene factorización
+$$(x-\lambda_1)(x-\lambda-2)$$
+con $\lambda_i$ reales, si y sólo si
+$b^2-4c\geq 0$.
+
+\subsection{Factorización de un polinomio sobre los reales}
+Sea $p$ un no constante polinomio sobre los reales, entonces
+$p$ tiene una factorización única de la forma
+$$p(x) = c\prod^m_{i=1}(x-\lambda_i)
+\prod^M_{j=1}(x^2+2b_jx+c_j)$$
+con $c,\lambda_i,b_j,c_j$ reales con $4b^2_j < 4c_j$.
+\newpage
+
+\section{Teoría espectral}
+\subsection{Operador}
+Un mapeo lineal de un espacio vectorial al mismo espacio 
+vectorial es llamado un operador (lineal).
+
+Sean $T$ un operador en $V$ y, $V_i$ más de un subespacio
+distintos de cero. Tenemos
+$$T(x) = \sum_i T_{V_i}x_i$$
+con $x_i\in V_i$, donde $T_{V_i}$ es $T$ restringido al
+subespacio $V_i$. De manera que para entender $T$ dados
+estos subespacios, solo necesitamos entender cada $T_{V_i}$.
+Los cuales están definidos en un subespacio más pequeño que
+$V$.
+
+Sin embargo hay un problema, puede que $T_{V_i}$ no sea un
+operador en $V_i$, es decir, que algunos $x\in V_i$
+son mapeados fuera de $V_i$.
+
+\subsection{Subespacio invariante}
+Sea $T$ un operador en $V$, Un subespacio $U$ es invariante
+bajo $T$ si $T(U)\subset U$.
+
+De manera que $U$ es invariante bajo $T$ si $T_U$ es un
+operador.
+
+Cambiamos nuestra atención a subespacios invariantes de una
+dimensión. Un subespacio $U$ es invariante bajo $T$
+de dimensión $1$
+si y sólo si existe un vector $v\neq 0$ de $V$ tal que
+$$U = \{\lambda v: \forall \lambda\} = \spn(v).$$
+
+Si $U$ unidimensional es invariante bajo un operador $T$ de 
+$V$, entonces $Tv\in U$ para $v\in U$, entonces hay un 
+escalar $\lambda$ tal que 
+$$Tv=\lambda v.$$
+Recíprocamente, si $Tv=\lambda v$ para algún $\lambda$,
+entonces $\spn(v)$ es un subespacio
+unidimensional invariante bajo $T$.
+
+\subsection{Eigenvalor}
+Sea $T$ un operador en $V$. Un escalar $\lambda$ es llamado
+un eigenvalor si existe $v\neq 0$ tal que
+$$Tv=\lambda v.$$
+\newpage
+
+\subsection{Condiciones equivalentes para ser un eigenvalor}
+Sea $T$ de dimensión finita, $T$ operador en $V$, y
+$\lambda$ un escalar, entonces las siguientes proposiciones
+ son equivalentes.
+ \begin{enumerate}
+    \item $\lambda$ es eigenvalor de $T$.
+    \item $T-\lambda I$ no es inyectiva.
+    \item $T -\lambda I$ no es sobreyectiva.
+    \item $T -\lambda I$ no es invertible.
+ \end{enumerate}
+ \subsubsection*{Prueba}
+ Tenemos que punto 1 es equivalente a punto 2, porque
+ $Tv=\lambda v$ si y sólo si $(T-\lambda I)v = 0$ para todo
+ $v\in V$. De manera que para $u\neq v$, $(T-\lambda I)v =
+ (T-\lambda I)u$. Punto 2 3 y 4 son equivalentes por
+ un teorema de transformaciones que mapean el dominio
+ a un contradominio de la misma dimensión.
+ \hfill ////
+
+\newpage
 \section*{Referencias}
 \begin{enumerate}
     \item Linear Algebra Done Right 4ta edición, por Axler, Sheldon.
