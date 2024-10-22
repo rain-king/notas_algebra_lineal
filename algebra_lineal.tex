@@ -4,6 +4,9 @@
 \usepackage{hyperref}
 \usepackage[utf8]{inputenc}
 
+\counterwithin*{equation}{section}
+\counterwithin*{equation}{subsection}
+
 \title{Notas de Algebra Lineal}
 \author{Murillo Vega, Gustavo \\ e-mail:
 \href{mailto:g.murillo24@info.uas.edu.mx}{g.murillo24@info.uas.edu.mx}}
@@ -1425,16 +1428,17 @@ con el grado de $r$ menor que $s$.
 Todo polinomio no constante de coeficientes complejos, tiene
 un cero en los complejos.
 
-\subsection{teorema fundamental del algebra, segunda versión}
+\subsection{Teorema fundamental del algebra, segunda versión}
+\label{algebrafundamental}
 Si $p$ es un polinomio sobre los complejos no constante de 
 coeficientes complejos, de grado $n$,
 entonces $p$ tiene una factorización única
-$$p(z)=c\prod^n_{i=0}(z-\lambda_i)$$
+$$p(z)=c\prod^n_{i=1}(z-\lambda_i)$$
 con $c,\lambda_j$ en los complejos.
 
 \subsection{Factorización de polinomios sobre los reales}
 Si $p$ es un polinomio sobre los complejos con coeficientes 
-reales y $\lambda$ es un cero de $p$, entonces $\lambda$ también
+reales y $\lambda$ es un cero de $p$, entonces $\overline\lambda$ también
 lo es.
 
 \subsection{Factorización de un polinomio cuadrático}
@@ -1479,6 +1483,7 @@ bajo $T$ si $T(U)\subset U$.
 De manera que $U$ es invariante bajo $T$ si $T_U$ es un
 operador.
 
+\subsubsection*{Subespacios invariantes unidimensionales}
 Cambiamos nuestra atención a subespacios invariantes de una
 dimensión. Un subespacio $U$ es invariante bajo $T$
 de dimensión $1$
@@ -1513,10 +1518,123 @@ $\lambda$ un escalar, entonces las siguientes proposiciones
  Tenemos que punto 1 es equivalente a punto 2, porque
  $Tv=\lambda v$ si y sólo si $(T-\lambda I)v = 0$ para todo
  $v\in V$. De manera que para $u\neq v$, $(T-\lambda I)v =
- (T-\lambda I)u$. Punto 2 3 y 4 son equivalentes por
+ (T-\lambda I)u$. Punto 2, 3, y 4 son equivalentes por
  un teorema de transformaciones que mapean el dominio
  a un contradominio de la misma dimensión.
  \hfill ////
+
+ \subsection{Eigenvector}
+Sea $T$ un operador en $V$ y $\lambda$ un eigenvalor
+de $T$. Entonces un vector $v$ es llamado un
+eigenvector de $V$ correspondiente a $\lambda$, si
+$v\neq 0$ y $Tv=\lambda v$.
+
+\subsection{Eigenvectores linealmente independientes}
+Si $T$ es un operador lineal en $V$. Entonces la lista
+de eigenvectores correspondiente a distintos eigenvalores
+es linealmente independiente.
+\subsubsection*{Prueba}
+Pendiente.
+
+\subsection{Un operador no puede tener más eigenvalores que la dimensión de su espacio}
+Si $V$ es de dimensión finita, un operador en $V$ no puede
+tener más de $\dim V$ eigenvalores distintos. 
+\subsubsection*{Prueba}
+Sea $T$ un operador, si $m$ $\lambda_i$ son distintos 
+eigenvalores, por el teorema anterior los eigenvectores
+$v_i$ correspondientes son linealmente independientes.
+Por teoría de espacios vectoriales de dimensión finita,
+esta lista de eigenvectores no puede tener una dimensión
+mayor a $\dim V$. \hfill ////
+
+\subsection{Polinomios aplicados a los operadores}
+\subsubsection{Notación de potencias de un operador}
+Si $T$ es un operador en $V$, y $m$ un entero positivo.
+\begin{enumerate}
+    \item $T^0= I$.
+    \item $T^1 = T$.
+    \item $T^m$ es definido recursivamente como $T(T^{m-1})$.
+    \item Si $T$ es invertible, se define $T^{-m}$ como
+    $$(T^{-1})^m.$$
+\end{enumerate}
+
+\subsubsection{Notación de polinomio de un operador}
+Si $T$ es un operador en $V$ y $p$ un polinomio sobre $F$
+definido por $$p(z)=\sum^n_{k=0}a_k z^k$$
+para $z\in F$, entonces definimos el operador $p(T)$ como
+$$p(T)=\sum^n_{k=0}a_k T^k.$$
+
+\subsubsection{La multiplicación de polinomios de operadores es conmutativa}
+\subsubsection*{Prueba}
+Es trivial que $pq=qp$ si $p$ y $q$ son polinomios sobre un
+campo. Entonces $$p(T)q(T) = (pq)T = (qp)T = q(T)p(T).$$
+\hfill ////
+
+Es fácil comprobar que $\ker T$ y $\im T$ son invariantes bajo
+$T$, además de los casos más triviales $\{0\}$ y $V$.
+Pero además, los polinomios de $T$ conservan esta propiedad.
+\newpage
+
+\subsubsection{El kernel y la imagen de un polinomio de un operador son invariantes}
+Sea $T$ un operador en $V$ y $p$ un polinomio sobre $F$. 
+Entonces $\ker p(T)$ e $\im T$ son invariantes bajo $T$.
+\subsubsection*{Prueba}
+Supóngase que $u\in\ker p(T)$, mostramos que $Tu\in\ker p(T)$.
+$$(p(T))(Tu)=(p(T)T)u=(Tp(T))u=T(p(T))u=T(p(T)u)=T(0)=0.$$
+Donde la segunda igualdad viene de la conmutatividad de
+polinomios, en este caso $T=i(T)$ donde $i$ es el polinomio
+identidad $p(z)=z$, y la penúltima igualdad viene de la
+suposición que $u\in\ker p(T)$.
+
+\subsection{El polinomio mínimo}
+\subsubsection{Existencia de eigenvalores}
+Todo operador en un espacio de dimensión finita distinto de cero
+sobre los complejos tiene un eigenvalor.
+\subsubsection*{Prueba}
+Sea $T$ un operador en $V$ de dimensión $n$. Tomando $v\neq 0$, la siguiente lista no es linealmente 
+independiente:
+\begin{align}\label{lista}
+    v, Tv, \ldots, T^n v
+\end{align}
+pues tiene $n+1$ vectores. Es decir, que existe
+una combinación lineal de esta lista que es igual a $0$,
+con algún coeficiente distinto de $0$. De manera que se
+puede representar esta combinación lineal con un polinomio
+$p$, con la forma
+\begin{align}
+    p(T)v = 0.
+\end{align}
+
+Sean los coeficientes de la combinación lineal
+$a_0,\ldots,a_n$ para $v,Tv,\ldots,T^n v$ respectivamente.
+Si $p$ fuera constante, $a_0$ sería
+el único coeficiente distinto de $0$, pero
+esto implicaría que
+$$p(T)v=a_0v =0$$
+es falso, pues $v\neq 0$. De manera que tenemos que $p$
+no es constante.
+
+Existe un conjunto de polinomios $r$ con
+coeficientes $a_0,\ldots,a_m$ para algún $m\leq n$, de 
+manera que $r(T)v=0$ se cumple, y $r$ no es constante
+(por lo menos, $m=n$).
+Tomamos el $r$ con $m$ mínimo del conjunto.
+
+Entonces por la primer versión del teorema fundamental del
+álgebra \ref{algebrafundamental}, existen
+$\lambda$ y $q$ tal que
+$$r(z) = (z-\lambda)q(z).$$
+Implicando que
+$$r(T)v = (T-\lambda I)q(T)v = 0,$$
+o
+$$Tq(T)v = \lambda q(T)v.$$
+Como $q$ es de menor grado que $r$, no cumple que $q(T)v = 0$ o
+no cumple que $q$ no es constante, es decir, en ambos casos
+$q(T)v\neq 0$.
+
+Luego $\lambda$ es
+eigenvalor de $T$ y $q(T)v$ un respectivo eigenvector.
+\hfill ////
 
 \newpage
 \section*{Referencias}
