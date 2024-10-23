@@ -1458,7 +1458,7 @@ $$p(x) = c\prod^m_{i=1}(x-\lambda_i)
 con $c,\lambda_i,b_j,c_j$ reales con $4b^2_j < 4c_j$.
 \newpage
 
-\section{Teoría espectral}
+\section{Eigenvalores y eigenvectores}
 \subsection{Operador}
 Un mapeo lineal de un espacio vectorial al mismo espacio 
 vectorial es llamado un operador (lineal).
@@ -1475,6 +1475,9 @@ $V$.
 Sin embargo hay un problema, puede que $T_{V_i}$ no sea un
 operador en $V_i$, es decir, que algunos $x\in V_i$
 son mapeados fuera de $V_i$.
+
+En esta sección también omitiremos algunas pruebas, no porque
+sean triviales, al contrario, por su complejidad.
 
 \subsection{Subespacio invariante}
 Sea $T$ un operador en $V$, Un subespacio $U$ es invariante
@@ -1497,12 +1500,12 @@ $$Tv=\lambda v.$$
 Recíprocamente, si $Tv=\lambda v$ para algún $\lambda$,
 entonces $\spn(v)$ es un subespacio
 unidimensional invariante bajo $T$.
+\newpage
 
 \subsection{Eigenvalor}
 Sea $T$ un operador en $V$. Un escalar $\lambda$ es llamado
 un eigenvalor si existe $v\neq 0$ tal que
 $$Tv=\lambda v.$$
-\newpage
 
 \subsection{Condiciones equivalentes para ser un eigenvalor}
 Sea $T$ de dimensión finita, $T$ operador en $V$, y
@@ -1533,8 +1536,6 @@ $v\neq 0$ y $Tv=\lambda v$.
 Si $T$ es un operador lineal en $V$. Entonces la lista
 de eigenvectores correspondiente a distintos eigenvalores
 es linealmente independiente.
-\subsubsection*{Prueba}
-Pendiente.
 
 \subsection{Un operador no puede tener más eigenvalores que la dimensión de su espacio}
 Si $V$ es de dimensión finita, un operador en $V$ no puede
@@ -1588,8 +1589,8 @@ suposición que $u\in\ker p(T)$.
 
 \subsection{El polinomio mínimo}
 \subsubsection{Existencia de eigenvalores}
-Todo operador en un espacio de dimensión finita distinto de cero
-sobre los complejos tiene un eigenvalor.
+Todo operador, en un espacio de dimensión finita distinto de cero
+sobre los complejos, tiene un eigenvalor.
 \subsubsection*{Prueba}
 Sea $T$ un operador en $V$ de dimensión $n$. Tomando $v\neq 0$, la siguiente lista no es linealmente 
 independiente:
@@ -1635,6 +1636,253 @@ $q(T)v\neq 0$.
 Luego $\lambda$ es
 eigenvalor de $T$ y $q(T)v$ un respectivo eigenvector.
 \hfill ////
+
+\subsection{Eigenvalores y el polinomio mínimo}
+\subsubsection{Polinomio mónico}
+Un polinomio mónico es un polinomio cuyo coeficiente de
+mayor grado es $1$.
+
+\subsubsection{Existencia y unicidad del polinomio mínimo}
+Sea $T$ un operador en $V$. Entonces hay un polinomio mónico
+$p$ único de grado mínimo tal que $p(T)=0$. Además
+su grado es menor o igual a la dimensión de $V$.
+
+\subsubsection{Polinomio mínimo}
+Suponga que $T$ es un operador, sobre $V$ de dimensión finita.
+Entonces el polinomio mínimo de $T$ es el único
+polinomio mónico $p$, de grado mínimo tal que 
+$p(T)=0$.
+
+\subsubsection{Eigenvalores son los ceros del polinomio mínimo}
+Sea $T$ un operador en $V$.
+\begin{enumerate}
+    \item Los ceros del polinomio mínimo son los eigenvalores
+    de $T$.
+    \item Si $V$ es un espacio vectorial complejo, entonces
+    el polinomio mínimo de $T$ tiene la forma
+    $$(z-\lambda_1)\cdots(z-\lambda_m),$$
+    donde $\lambda_i$ son todos los eigenvalores de $T$.
+\end{enumerate}
+
+\subsubsection{Caracterización de polinomios que generan el operador cero}
+Sea $T$ un operador lineal en $V$ y $q$ un polinomio sobre el
+campo de $V$. Entonces $q(T)=0$ si y sólo si $q$
+es un polinomio múltiplo del polinomio mínimo de $T$.
+
+\subsubsection{Invertibilidad a partir del polinomio mínimo}
+Sea $V$ de dimensión finita y $T$ un operador en este espacio.
+Entonces $T$ no es invertible si y sólo si el término
+constante del polinomio mínimo de $T$ es $0$.
+
+\subsection{Eigenvalores en espacios reales de dimensión impar}
+\subsubsection*{Kernel de dimensión par}
+Si el campo son los reales y $V$ es de dimensión finita,
+$T$ un operador en $V$, y además $b,c$ reales tal que 
+$b^2<4c$. Entonces $\dim\ker (T^2+bT+cI)$ es par.
+
+\subsubsection{Operadores de dimensión impar tienen eigenvalores}
+Todo operador en un espacio vectorial de dimensión impar
+tiene un eigenvalor.
+
+\subsection{Matrices triangulares superiores}
+\subsubsection{Diagonal de una matriz}
+La diagonal de una matriz diagonal $A$ son sus elementos
+$A_{i,i}$.
+
+\subsubsection{Matriz triangular superior}
+Una matriz es triangular superior si todas sus entradas
+debajo de la diagonal son $0$. Esto es, si $A_{i,j}$
+con $i>j$.
+
+\subsubsection{Condiciones para una matriz triangular superior}
+Suponga que $T$ es un operador lineal en $V$ y $v_1,\ldots,v_n$
+una base.
+Entonces los siguientes son equivalentes.
+\begin{enumerate}
+    \item $\M(T,v_i)$ es triangular superior.
+    \item $\spn(v_1,\ldots,v_k)$ es invariante bajo $T$ para 
+    cada $k=1,\ldots,n$.
+    \item $Tv_k\in\spn(v_1,\ldots, v_k)$ para cada
+    $k=1,\ldots,n$.
+\end{enumerate}
+\subsubsection*{Prueba}
+Supongamos el punto 1. Como $T$
+es un operador, sea $k\in\{1,\ldots,n\}$ entonces
+$$Tv_k=\sum^n_{i=1} A_{i,k} v_i,$$
+pero al ser $\M(T)$ triangular superior,
+$$Tv_k=\sum^k_{i=1} A_{i,k} v_i.$$
+Y si $v\in\spn(v_1,\ldots,v_k)$ es decir
+$v=\sum^k_{i=1}\alpha_i v_i$, entonces
+$$Tv=\sum^k_{i=1} A_{i,k} \alpha_i Tv_i,$$
+$$Tv=\sum^k_{i=1} A_{i,k} \alpha_i \sum^k_{r=1} A_{r,k} v_r,$$
+$$Tv=\sum^k_{r=1}\left(
+    \sum^k_{i=1}A_{i,k}A_{r,k}\alpha_i\right) v_r.$$
+De manera que $T(v)\in\spn(v_1,\ldots,v_k)$ probando que del
+punto 1 sigue 2.
+
+Es trivial que del punto 2 sigue el punto 3.
+
+Supongamos el punto 3. De expandir $Tv_k$ para cada $k$
+como combinación lineal de $v_1,\ldots,v_k$, se obtiene
+$\M(T,v_i)$ por definición, y esta es
+triangular superior.\hfill ////
+
+\subsubsection{Una ecuación satisfecha por operadores con matriz triangular superior}
+Sea $T$ un operador sobre $V$ que tiene una base, tal que
+$\M(T)$ es triangular superior con entradas diagonales
+$\lambda_1,\ldots,\lambda_n$. Entonces
+$$(T-\lambda_1 I)\cdots(T-\lambda_n I) = 0.$$
+\subsubsection*{Prueba}
+Sea $v_1,\ldots,v_n$ una base para $V$ tal que sea $A=\M(T)$ sea 
+diagonal.
+
+Ya que $A-\lambda_k I$ es triangular superior con el
+elemento $k$ de la diagonal igual a $0$, entonces
+\begin{equation}
+    \label{formasuma}
+    (T-\lambda_k I)v_k=\sum^{k-1}_{i=1}A_{i,k} v_i.
+\end{equation}
+
+Cuando $k=1$ esto significa que
+$$(T-\lambda_1 I)v_1 = 0.$$
+Luego por conmutatividad de polinomios de operadores,
+$$(T-\lambda_1 I)\cdots (T-\lambda_n I)v_1 = 0.$$
+
+Ahora, suponiendo que para un $k$ tal que $1\leq k\leq n-1$
+se cumple 
+\begin{equation}\label{anuladores}
+    (T-\lambda_1 I)\cdots(T-\lambda_m I)v_m = 0,
+\end{equation}
+para $m=1,\ldots,k$.
+
+Por \ref{formasuma} sigue que
+\begin{equation*}
+    (T-\lambda_{k+1} I)v_{k+1} = \sum^{k}_{i=1}A_{i,k} v_i.
+\end{equation*}
+Le aplicamos $(T-\lambda_1 I)\cdots(T-\lambda_k I)$:
+$$
+(T-\lambda_1 I)\cdots(T-\lambda_k I)
+(T-\lambda_{k+1} I)v_{k+1} =
+\sum^{k}_{i=1}A_{i,k} (T-\lambda_1 I)\cdots(T-\lambda_k I)v_i.
+$$
+Por conmutatividad y \ref{anuladores}, podemos ordenar los 
+operadores de los términos a la derecha,
+tal que cada término $i$ se anula. De manera que
+$$(T-\lambda_1 I)\cdots
+(T-\lambda_{k+1} I)v_{k+1} = 0,$$
+y por consecuencia también
+$$(T-\lambda_1 I)\cdots(T-\lambda_{n} I)v_{k+1} = 0$$
+por conmutatividad.
+
+Por inducción hemos probado que
+$$(T-\lambda_1 I)\cdots(T-\lambda_{n} I)v_k = 0$$
+para cada $k$,
+entonces el operador $(T-\lambda_1 I)\cdots(T-\lambda_k I)
+(T-\lambda_{n} I)$ debe ser $0$.
+
+\hfill ////
+
+\subsubsection{Eigenvalores de una matriz triangular superior}
+Sea $T$ un operador en $V$ con matriz triangular superior en
+una base de $V$, entonces los eigenvalores de $T$ son
+las entradas de la diagonal de esa matriz.
+\subsubsection*{Prueba}
+La demostración de Axler usa el teorema anterior.
+
+\subsubsection{Equivalencia para una matriz trangular superior}
+Sea $T$ un operador sobre un espacio vectorial $V$ finito.
+entonces $T$ tiene una matriz triangular superior si y
+sólo si el polinomio mínimo es
+$(z-\lambda_1)\cdots(z-\lambda)$ para $\lambda_i$ escalares.
+
+\subsubsection{Los operadores en campos complejos tienen matriz triangular superior}
+Si $T$ es un operador en un espacio $V$ con campo complejo
+entonces hay una base tal que $\M(T)$ es triangular superior.
+\subsubsection*{Prueba}
+Por el teorema anterior y la segunda versión del teorema
+fundamental del álgebra.\hfill ////
+
+\subsection{Operadores diagonalizables}
+\subsubsection{Matriz diagonal}
+Una matriz diagonal es una matriz cuadrada que tiene por
+entradas $0$, excepto posiblemente en la diagonal.
+
+\subsubsection{Operador diagonalizable}
+Un operador $T$ sobre $V$ es diagonalizable si tiene
+una base tal que $\M(T)$ es diagonal.
+
+\subsubsection{Eigenespacio}
+Si $T$ es un operador en $V$ y $\lambda$ un escalar de su campo.
+El eigenespacio de $T$ correspondiente a $\lambda$ es
+definido por 
+$$E(\lambda, T)=\ker(T-\lambda I)=\{v:Tv=\lambda v\}.$$
+Es decir, el espacio de todos los eigenvectores correspondientes
+a $\lambda$ más el cero.
+
+Con esta definición, $\lambda$ es un eigenvalor de $T$
+si y sólo si $E(\lambda, T)\neq \{0\}$. Además es claro que es
+un subespacio vectorial de $V$ pues el kernel de sus
+mapeos lineales es un subespacio.
+
+\subsubsection{La suma de eigenespacios es una suma directa}
+Sea $T$ un operador en $V$ y $\lambda_1,\ldots,\lambda_m$ 
+distintos eigenvalores de de $T$. Entonces
+$$E(\lambda_1, T)+\cdots+E(\lambda_m, T)$$
+es una suma directa.
+Además si $V$ es de dimensión finita, entonces
+$$\dim E(\lambda_1, T)+\dim E(\lambda_m, T) \leq \dim V.$$
+
+\subsubsection{Condiciones equivalentes para diagonalizar}
+Sea $T$ un operador lineal sobre $V$, y
+$\lambda_1,\ldots,\lambda_m$ los distintos eigenvalores de
+$T$. Entonces los siguientes son equivalentes.
+\begin{enumerate}
+    \item $T$ es diagonalizable.
+    \item $V$ tiene una base que consiste de eigenvectores de
+    $T$.
+    \item $V=E(\lambda_1, T)\oplus E(\lambda_m, T)$.
+    \item $\dim V =
+    \dim E(\lambda_1, T)+\ldots+\dim E(\lambda_m, T)$.
+\end{enumerate}
+
+\subsubsection{Suficientes eigenvalores implcian diagonalizabilidad}
+Si $T$ es un operador lineal sobre un espacio $V$ de dimensión
+finita y $T$ tiene $\dim V$ eigenvalores, entonces
+$T$ es diagonalizable.
+
+\subsection{Operadores conmutativos}
+\subsubsection{Operadores conmutativos corresponden a matrices conmutativas}
+Suponga que $S$ y $T$ son operadores en $V$ de dimensión finita
+y $v_i$ una base. Entonces $S$ y $T$ conmutan si y sólo si
+$\M(T)$ y $\M(S)$ conmutan.
+
+\subsubsection{Eigenespacio es invariante sobre operador
+conmutante}
+Si $S,T$ son operadores conmutantes en $V$, y $\lambda$ un
+escalar. Entonces $E(\lambda, S)$ es invariante bajo $T$.
+
+\subsubsection{Diagonalizabilidad simultanea equivale a conmutatividad}
+Dos operadores diagonalizables tienen matrices diagonales
+en la misma base si y sólo si los operadores son conmutativos.
+
+\subsubsection{Eigenvector común para operadores conmutativos}
+Todo par de operadores conmutativos en un espacio vectorial
+complejo finito distinto de $\{0\}$ tiene un
+eigenvector en común.
+
+\subsubsection{Operadores conmutativos tienen simultaneamente
+matrices triangulares superiores}
+Si $S,T$ son operadores conmutativos en $V$, entonces
+hay una base de $V$ respecto a la cual ambos operadores
+tienen matrices triangulares superiores.
+
+\subsubsection{Eigenvalores de suma y producto de operadores conmutativos}
+Sea $V$ un espacio vectorial finito complejo, y $T, S$
+operadores conmutativos en este mismo. Entonces
+\begin{itemize}
+    \item todo eigenvalor de $S+T$ es la suma de un eigenvalor de $S$ y uno de $T$.
+    \item Todo eigenvalor de $ST$ es el producto de un eigenvalor de $S$ con un eigenvalor de $T$.
+\end{itemize}
 
 \newpage
 \section*{Referencias}
