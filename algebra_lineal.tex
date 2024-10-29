@@ -102,7 +102,7 @@ Si inspeccionamos esta expresión con la del sistema de ecuaciones lineales, ten
 $$Ax = b.$$
 
 \subsection{Algunos productos usados más adelante}
-\textbf{Producto interno}
+\textbf{Producto interior}
 
 Si $x$ y $y$ son vectores de la misma dimensión, definimos su
 producto interior $(x,y)$ como
@@ -1883,10 +1883,249 @@ operadores conmutativos en este mismo. Entonces
     \item todo eigenvalor de $S+T$ es la suma de un eigenvalor de $S$ y uno de $T$.
     \item Todo eigenvalor de $ST$ es el producto de un eigenvalor de $S$ con un eigenvalor de $T$.
 \end{itemize}
+\newpage
+
+\newcommand{\ip}[2]{\langle #1, #2\rangle}
+\section{Productos interiores y normas}
+\subsection{Definición: Producto interior}
+Un producto interior es una función
+$\langle \cdot, \cdot\rangle: V\times V\rightarrow F$
+con las siguientes propiedades.
+\begin{enumerate}
+    \item $\ip{x}{x}\geq 0$.
+    \item $\ip{x}{x}=0\iff x=0$.
+    \item $\ip{x+\lambda y}{z}=\ip{x}{z}+\lambda\ip{y}{z}$.
+    \item $\ip{x}{y}=\overline{\ip{y}{z}}$.
+\end{enumerate}
+
+\subsection{Propiedades básicas del producto interior}
+\begin{enumerate}
+    \item $\ip{\cdot}{y}:V\rightarrow F$ es un funcional lineal.
+    \item $\ip{0}{y} = 0$ y $\ip{x}{0} = 0$.
+    \item $\ip{x}{y+\lambda z} =\ip{x}{y}+\overline\lambda\ip{x}{z}$.
+\end{enumerate}
+\subsubsection*{Prueba}
+Punto 1 y 2 son triviales.
+
+Punto 3 es verdadero porque
+\begin{align*}
+    \ip{x}{y + \lambda z} &= \overline{\ip{y + \lambda z}{x}}\\
+    &= \overline{\ip{y}{x}+\lambda\ip{z}{x}} \\
+    &= \ip{x}{y}+\overline{\lambda}\ip{x}{z}.
+\end{align*}
+\hfill ////
+
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\subsection{Norma}
+En un espacio con producto interior $V$ definimos
+``la norma de $V$'' por la función
+$\norm{\cdot}: V\rightarrow F$ dada por
+$$\norm{x} = \sqrt{\ip{x}{x}}.$$
+
+\subsection{Propiedades de la norma}
+\begin{enumerate}
+    \item $\norm{x}=0 \iff x = 0$.
+    \item $\norm{\lambda x}=\lambda\norm{x}$.
+\end{enumerate}
+
+\subsection{Vectores ortogonales}
+$x$ es ortogonal a $y$ si $\ip{x}{y}=0$.
+
+\subsubsection{Cero y ortogonalidad}
+\begin{itemize}
+    \item $0$ es ortogonal a todo vector.
+    \item $0$ es el único vector ortogonal a sí mismo.
+\end{itemize}
+
+\subsection{Teorema de Pitágoras}
+Sean $x$ y $y$ ortogonales, entonces
+$$\norm{x+y}^2 = \norm{x}^2 + \norm{y}^2.$$
+\subsubsection*{Prueba}
+\begin{align*}
+    \norm{x+y}^2 &= \ip{x+y}{x+y} \\
+    &= \ip{x}{x+y} + \ip{y}{x+y} \\
+    &= \ip{x}{x}+\ip{x}{y}+\ip{y}{x}+\ip{y}{y} \\
+    &= \norm{x}^2 + \norm{y}^2.
+\end{align*}
+\hfill ////
+
+\subsection{Una descomposición ortogonal}
+Sea $y\neq 0$, y sea $\lambda=\frac{\ip{x}{y}}{\norm{y}^2}$ y
+$z=x - \lambda y$ entonces
+$$x=\lambda y + z$$
+y $\ip{y}{z}=0$.
+\subsubsection*{Prueba}
+Claramente
+\begin{align*}
+    \lambda y + z &= \frac{\ip{x}{y}}{\norm{y}^2}y +
+    (x-\frac{\ip{x}{y}}{\norm{y}^2}y)\\
+    &= x.
+\end{align*}
+
+Y
+\begin{align*}
+    \ip{y}{z}&=\ip{y}{x-\frac{\ip{x}{y}}{\norm{y}^2}y}\\
+    &=\ip{y}{x}-\overline{\frac{\ip{x}{y}}{\norm{y}^2}}
+    \ip{y}{y}\\
+    &= \ip{y}{x}-\frac{\ip{y}{x}}{\norm{y}^2}
+    \norm{y}^2.
+\end{align*}
+\hfill ////
+
+\subsection{Desigualdad Cauchy-Schwarz}
+Sean $x,y$ vectores de un espacio con producto interior
+entonces
+$$|\ip{x}{y}| \leq \norm{x}\norm{y}.$$
+Además, se tiene igualdad si y sólo si un vector es
+múltiplo escalar del otro.
+\subsubsection*{Prueba}
+Se usa la descomposición anterior en $x$ y se eleva al
+cuadrado.
+\hfill ////
+
+\subsection{Desigualdad del triángulo}
+Sean $x$ y $y$ vectores de un espacio con producto interior
+$$\norm{x+y}\leq \norm{x}+\norm{y}.$$
+Esta desigualdad es igualdad si y sólo si uno de $x$ o $y$
+es múltiplo no-negativo real del otro.
+\subsubsection*{Prueba}
+\begin{align*}
+    \norm{x+y}^2 &= \ip{x+y}{x+y}\\
+    &= \ip{x}{x}+\ip{y}{y}+\ip{x}{y}+\ip{y}{x}\\
+    &= \norm{x}^2+\norm{y}^2+\ip{x}{y}+\overline{\ip{x}{y}}\\
+    &= \norm{x}^2+\norm{y}^2+ 2\text{Re}\ip{x}{y}\\
+    &\leq \norm{x}^2+\norm{y}^2+ 2|\ip{x}{y}|\\
+    &\leq \norm{x}^2+\norm{y}^2+ 2\norm{x}\norm{y}\\
+    &= (\norm{x}+\norm{y})^2.
+\end{align*}
+Tomando la raíz cuadrada tenemos la desigualdad buscada.
+
+Para encontrar cuando se cumple la igualdad, tenemos
+que verificar cuándo las desigualdades anteriores son
+igualdades.
+
+En la segunda desigualdad de las ecuaciones anteriores
+se tiene la igualdad si y sólo si
+$$|\ip{x}{y}|\leq \norm{x}\norm{y}.$$
+Por el teorema de la desigualdad de Cauchy-Schwarz
+esto es equivalente a que existe $\lambda$ complejo tal que
+$y=\lambda x$.
+
+En la primer desigualdad, se tiene igualdad si y sólo si
+$$\text{Re}\ip{x}{y} = |\ip{x}{y}|.$$
+Esto pasa si y sólo si $\ip{x}{y}$ es real no negativo.
+Equivalentemente, $\lambda\ip{x}{x}=\lambda\norm{x}^2$ es real
+no negativo, o $\lambda$ real no negativo.
+
+Por lo que concluimos que la igualdad en la desigualdad
+del triángulo es verdadera si y sólo un vector
+es múltiplo real no-negativo del otro. \hfill ////
+
+\subsubsection{Desigualdad del triángulo invertido}
+$$\left|\norm{x}-\norm{y}\right| \leq \norm{x-y}.$$
+\subsubsection*{Prueba}
+Tenemos por la desigualdad del triángulo
+$$\norm{x}\leq \norm{y}+\norm{x-y},$$
+que es equivalente a
+$$\norm{x} - \norm{y}\leq\norm{x-y}.$$
+Y de la misma forma se obtiene
+$$-(\norm{x} - \norm{y})\leq \norm{x-y}.$$
+Combinando ambas desigualdades
+$$\left|\norm{x}-\norm{y}\right| \leq \norm{x-y}.$$
+\hfill ////
+
+\subsection{Igualdad del paralelogramo}
+$$\norm{x+y}^2+\norm{x-y}^2 = 2(\norm{x}+\norm{y}).$$
+\subsubsection*{Prueba}
+\begin{align*}
+    \norm{x+y}^2+\norm{x-y}^2
+    &= \ip{x+y}{x+y} + \ip{x-y}{x-y}\\
+    &= 2(\norm{x}^2+\norm{y}^2)+\ip{x}{y}+\ip{y}{x}+
+    -\ip{x}{y}-\ip{y}{x} \\
+    &= 2(\norm{x}^2+\norm{y}^2).
+\end{align*}
+\hfill ////
+\newpage
+
+\subsection{Ejercicio}
+Si $V$ es un espacio de producto interno real.
+\begin{enumerate}
+    \item $\ip{x+y}{x-y}=\norm{x}^2-\norm{y}^2$
+    \item Si $x$ y $y$ tienen la misma norma, $x+y$ es ortogonal a $x-y$.
+\end{enumerate}
+\subsubsection*{Prueba}
+En el lado izquierdo del punto 1
+\begin{align*}
+    \ip{x+y}{x-y}&=\ip{x}{x}-\ip{y}{y}+\ip{y}{x}-\ip{x}{y}\\
+    &=\norm{x}^2-\norm{y}^2.
+\end{align*}
+
+En el punto 2 se tiene
+\begin{align*}
+    \ip{x+y}{x-y}=\norm{x}^2-\norm{y}^2
+\end{align*}
+por el punto 1, y como se tiene la misma norma se llega al
+resultado.
+\hfill ////
+
+\subsection{Bases ortonormales}
+Una lista de vectores $v_1,\ldots,v_m$ es ortonormal si
+$\ip{v_i}{v_j}=\delta_{i,j}$.
+
+\subsubsection{Norma de una combinación lineal ortonormal}
+Sea $e_1,\ldots,e_m$ una lista ortonormal de vectores en $V$.
+Entonces
+$$\norm{\alpha_1e_1+\cdots+\alpha_m e_m}^2 =
+|a_1|^2+\cdots+|a_m|^2.$$
+\subsubsection*{Prueba}
+Sigue del teorema de Pitágoras.
+\hfill ////
+
+\subsubsection{Listas ortonormales son linealmente independientes}
+Toda lista de vectores ortonormales es linealmente independiente.
+\subsubsection*{Prueba}
+$x=0 \iff \norm{x} = 0$ entonces por el teorema anterior
+$$\norm{\alpha_1e_1+\cdots+\alpha_m e_m}=0 
+\iff |a_1|^2+\cdots+|a_m|^2 = 0$$
+que implica $a_j=0$.
+\hfill ////
+
+\subsubsection{Desigualdad de Bessel}
+Sea $e_1,\ldots,e_m$ una lista ortonormal, entonces
+$$|\ip{x}{e_1}|^2+\cdots+|\ip{x}{e_m}|^2\leq \norm{x}^2.$$
+\subsubsection*{Prueba}
+---
+
+\subsubsection{Base ortonormal}
+Una base ortonormal es una lista de elementos de $V$
+ortonormales que además son una base de $V$.
+
+\subsubsection{Listas ortonormales son base cuando son de la dimensión del espacio}
+Suponga que $V$ es de dimensión finita. Si el número de 
+elementos distintos en una lista es la dimensión del
+espacio, entonces es una base ortonormal para $V$.
+\subsubsection*{Prueba}
+Una lista linealmente independiente es base cuando
+el número de elementos es la dimensión del espacio.
+Una lista de elementos ortonormales es linealmente 
+independiente.
+\hfill ////
+
+\subsubsection{Vector como combinación lineal de una base ortonormal}
+Suponga que $e_j$ es base ortonormal para $V$ de dimensión
+finita. Entonces:
+\begin{enumerate}
+    \item $x = \sum_j\ip{x}{e_j}$.
+    \item $\norm{x}^2 = \sum_j|\ip{x}{e_j}|^2$.
+    \item $\ip{x}{y}=\sum_j\ip{x}{e_j}\overline{\ip{y}{e_j}}$.
+\end{enumerate}
+\subsubsection*{Prueba}
+---
 
 \newpage
 \section*{Referencias}
 \begin{enumerate}
-    \item Linear Algebra Done Right 4ta edición, por Axler, Sheldon.
+    \item ``Linear Algebra Done Right 4ta edición'', por Axler. Para secciones 2 a 8.
+    \item ``Mathematics for Machine Learning'', por Deisenroth, Faisal, y Ong.
 \end{enumerate}
 \end{document}
